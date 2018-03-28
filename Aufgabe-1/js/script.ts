@@ -1,4 +1,5 @@
-namespace Boxes {
+document.addEventListener('DOMContentLoaded', function() {
+
     let n: number = 5;
     let c: string;
     let x: number = 0;
@@ -41,4 +42,4 @@ namespace Boxes {
         s.left = _x + "px";
         s.top = _y + "px";
     }
-}
+});
