@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
+
     function placeDiv(_color: string, _x: number, _y: number, _width: number, _height: number): void {
         let div: HTMLDivElement = document.createElement("div");
         document.body.appendChild(div);
@@ -43,3 +44,6 @@ document.addEventListener('DOMContentLoaded', function() {
         s.top = _y + "px";
     }
 });
+
+
+
