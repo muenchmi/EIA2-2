@@ -5,20 +5,20 @@ var Boxes;
     let x = 0;
     let y = 0;
     for (let i = 0; i < n; i++) {
-        y += (i == 2) ? 20 : 50;
+        y += (i == 2) ? 20 /*true*/ : 50; /*false*/
         x = (x + 170) % 400;
         switch (i) {
             case 0:
-                c = "#ff0000";
+                c = "#ff0000"; /*red*/
                 break;
             case 1:
             case 4:
-                c = "#00ff00";
+                c = "#00ff00"; /*gr�n*/
                 break;
             case 3:
                 continue;
             default:
-                c = "#0000ff";
+                c = "#0000ff"; /*blau*/
         }
         for (let a = 50; a > 0; a -= 20) {
             placeDiv(c, x, y, a, a);
