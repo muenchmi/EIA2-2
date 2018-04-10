@@ -23,7 +23,7 @@ var Aufgabe2;
             input.min = "1";
             input.max = "4";
             label.appendChild(input);
-            document.getElementById("flavor").appendChild(label);
+            document.getElementById("playernumber").appendChild(label);
             playernumberinputs.push(input);
         }
     }
