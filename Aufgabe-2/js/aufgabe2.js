@@ -1,11 +1,7 @@
-//namespace Aufgabe2 { }
-//
-//window.addEventListener("load", init);
-//
-//function init(_event: Event): void { 
-//
-//
-//}
-//
-//
+window.addEventListener("load", init);
+function init(_event) {
+    let playerNumber = 2;
+    let cardPair = 4;
+    let creatCards = ["A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F", "G", "G", "H", "H", "I", "I", "J", "J", "K", "K", "L", "L", "M", "M", "N", "N", "O", "O", "P", "P", "Q", "Q", "R", "R", "S", "S", "T", "T", "U", "U", "V", "V", "W", "W", "X", "X", "Y", "Y", "Z", "Z"];
+}
 //# sourceMappingURL=aufgabe2.js.map
