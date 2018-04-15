@@ -1,70 +1,29 @@
-div#memory_board {
-	background: #CCC;
-	border: #999 1px solid;
-	width: 800px;
-	height: 540px;
-	padding: 24px;
-	margin: 0px auto;
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+
+
+body {
+	font-family: 'Press Start 2P', cursive;
+	margin: 20px 0;
 }
 
-div#memory_board>div {
-	background: url(tile_bg.jpg) no-repeat;
-	border: #000 1px solid;
+#players {
+	margin: 10px;
+	padding: 20px;
+}
+
+#game {
+	margin: 10px;
+	padding: 20px;
+}
+
+div div {
 	width: 71px;
 	height: 71px;
 	float: left;
 	margin: 10px;
-	padding: 20px;
-	font-size: 64px;
+	padding: 15px;
+	font-size: 60px;
 	cursor: pointer;
 	text-align: center;
-	
-	
-	*,
-	*::
-	before
-	,
-	*
-	:
-	:
-	after
-	{
-	
-  
-	box-sizing
-	:
-	 
-	border-box;
-}
-
-body {
-	margin: 20px 0;
-	background: #6589F9;
-}
-
-.grid {
-	max-width: 960px;
-	margin: 0 auto;
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-evenly;
-}
-
-.card {
-	margin: 5px;
-	background-color: #6589F9;
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: center center;
-	height: 150px;
-	width: 150px;
-}
-
-.selected {
-  border: 4px solid blue;
-}
-
-.match {
-  border: 4px solid red;
-  background-image: none !important;
 }
