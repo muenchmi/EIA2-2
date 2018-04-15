@@ -27,3 +27,17 @@ div div {
 	cursor: pointer;
 	text-align: center;
 }
+
+.hidden {
+	border : thin solid black;
+	background-color : black;
+	
+}
+
+.open{
+	border : thin solid black;
+}
+
+.taken{
+	
+}

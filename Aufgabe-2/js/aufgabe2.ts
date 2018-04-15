@@ -54,26 +54,19 @@ namespace Aufgabe2 {
 
             if (randomNumber < 0.6) { //hidden
                 let div: HTMLDivElement = document.createElement("div");
-                div.setAttribute("class", random);
-                let s: CSSStyleDeclaration = div.style;
-                s.border = "thin solid black";
-                s.backgroundColor = "black";
-
+                div.setAttribute("class", "hidden");
                 document.getElementById("game").appendChild(div);
             }
 
             if (randomNumber > 0.6 && randomNumber < 0.8) { //open
                 let div: HTMLDivElement = document.createElement("div");
-                div.setAttribute("class", random);
+                div.setAttribute("class", "open");
                 div.innerText = random;
-                let s: CSSStyleDeclaration = div.style;
-                s.border = "thin solid black";
                 document.getElementById("game").appendChild(div);
             }
             else if (randomNumber > 0.8) { //taken
                 let div: HTMLDivElement = document.createElement("div");
-                div.setAttribute("class", random);
-                let s: CSSStyleDeclaration = div.style;
+                div.setAttribute("class", "taken");
 
                 document.getElementById("game").appendChild(div);
             }

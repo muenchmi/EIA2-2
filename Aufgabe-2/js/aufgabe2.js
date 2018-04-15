@@ -35,24 +35,18 @@ var Aufgabe2;
             let randomNumber = Math.random();
             if (randomNumber < 0.6) {
                 let div = document.createElement("div");
-                div.setAttribute("class", random);
-                let s = div.style;
-                s.border = "thin solid black";
-                s.backgroundColor = "black";
+                div.setAttribute("class", "hidden");
                 document.getElementById("game").appendChild(div);
             }
             if (randomNumber > 0.6 && randomNumber < 0.8) {
                 let div = document.createElement("div");
-                div.setAttribute("class", random);
+                div.setAttribute("class", "open");
                 div.innerText = random;
-                let s = div.style;
-                s.border = "thin solid black";
                 document.getElementById("game").appendChild(div);
             }
             else if (randomNumber > 0.8) {
                 let div = document.createElement("div");
-                div.setAttribute("class", random);
-                let s = div.style;
+                div.setAttribute("class", "taken");
                 document.getElementById("game").appendChild(div);
             }
             creatCards.splice(position, 1);
