@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+
+
+body {
+	font-family: 'Press Start 2P', cursive;
+	margin: 20px 0;
+}
+
+#players {
+	margin: 10px;
+	padding: 20px;
+}
+
+#game {
+	margin: 10px;
+	padding: 20px;
+}
+
+div div {
+	width: 71px;
+	height: 71px;
+	float: left;
+	margin: 10px;
+	padding: 15px;
+	font-size: 60px;
+	cursor: pointer;
+	text-align: center;
+}
+
+.hidden {
+	border : thin solid black;
+	background-color : black;
+	
+}
+
+.open{
+	border : thin solid black;
+}
+
+.taken{
+	
+}
