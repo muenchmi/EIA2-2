@@ -39,22 +39,21 @@ var Aufgabe3;
             let position = createCards.indexOf(random); //finde die Position des Buchstabens herraus
             let div = document.createElement("div");
             div.setAttribute("class", "hidden");
+            div.innerText = random;
             div.addEventListener("click", cardClicked);
             document.getElementById("game").appendChild(div);
             createCards.splice(position, 1);
-            function cardClicked(event) {
-                let clicked = event.target;
-                if (counter < 2) {
-                    counter++;
-                    if (counter == 1) {
-                        div.setAttribute("class", "open");
-                        div.innerText = random;
-                    }
-                    else {
-                        div.setAttribute("class", "open");
-                        div.innerText = random;
-                        setTimeout(compareCards, 2000);
-                    }
+        }
+        function cardClicked(event) {
+            let clicked = event.target;
+            if (counter < 2) {
+                counter++;
+                if (counter == 1) {
+                    clicked.setAttribute("class", "open");
+                }
+                else {
+                    clicked.setAttribute("class", "open");
+                    setTimeout(compareCards, 2000);
                 }
             }
         }

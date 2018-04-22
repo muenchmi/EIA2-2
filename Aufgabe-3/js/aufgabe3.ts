@@ -57,28 +57,24 @@ namespace Aufgabe3 {
             let div: HTMLDivElement = document.createElement("div");
 
             div.setAttribute("class", "hidden");
-
+            div.innerText = random;
             div.addEventListener("click", cardClicked);
 
             document.getElementById("game").appendChild(div);
             createCards.splice(position, 1);
-            function cardClicked(event: Event) {
-                let clicked: HTMLElement = <HTMLElement>event.target;
+        }
+        function cardClicked(event: Event) {
+            let clicked: HTMLElement = <HTMLElement>event.target;
 
-                if (counter < 2) {
-                    counter++;
-                    if (counter == 1) {
-                        div.setAttribute("class", "open");
-                        div.innerText = random;
-                    }
-                    else {
-                        div.setAttribute("class", "open");
-                        div.innerText = random;
+            if (counter < 2) {
+                counter++;
+                if (counter == 1) {
+                    clicked.setAttribute("class", "open");
 
-
-                        setTimeout(compareCards, 2000);
-
-                    }
+                }
+                else {
+                    clicked.setAttribute("class", "open");
+                    setTimeout(compareCards, 2000);
                 }
             }
         }
