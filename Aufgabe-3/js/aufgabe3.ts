@@ -47,7 +47,9 @@ namespace Aufgabe3 {
             let text: string = "Spieler" + " " + n + ":";
             p.innerText = text;
             document.getElementById("players").appendChild(p);
+
         }
+
         function createCard(): void {
             let random: string = createCards[Math.floor(Math.random() * createCards.length)]; //greife eine random Buchstabe aus dem array
             let position: number = createCards.indexOf(random); //finde die Position des Buchstabens herraus
@@ -68,7 +70,6 @@ namespace Aufgabe3 {
                     if (counter == 1) {
                         div.setAttribute("class", "open");
                         div.innerText = random;
-
                     }
                     else {
                         div.setAttribute("class", "open");
@@ -77,47 +78,41 @@ namespace Aufgabe3 {
 
                         setTimeout(compareCards, 2000);
 
-                        function compareCards() {
-                            let firstGuess = document.getElementsByClassName("open")[0];
-                            let secondGuess = document.getElementsByClassName("open")[1];
-
-                            console.log(firstGuess);
-                            console.log(secondGuess);
-
-                            if (firstGuess.innerHTML == secondGuess.innerHTML) {
-
-                                firstGuess.setAttribute("class", "taken");
-                                secondGuess.setAttribute("class", "taken");
-
-                                counter = 0;
-
-                            }
-
-                            else {
-                                firstGuess.setAttribute("class", "hidden");
-                                secondGuess.setAttribute("class", "hidden");
-                                counter = 0;
-                            }
-                            fin();
-                        }
                     }
                 }
-                function fin() {
-                    let hiddencards = document.getElementsByClassName("hidden");
-                    if (hiddencards.length == 0) {
-                        alert("Gut gemacht! Du hast das Spiel beendet");
-                    }
-                }
+            }
+        }
+        function compareCards() {
+            let firstGuess = document.getElementsByClassName("open")[0];
+            let secondGuess = document.getElementsByClassName("open")[1];
 
+            console.log(firstGuess);
+            console.log(secondGuess);
+
+            if (firstGuess.innerHTML == secondGuess.innerHTML) {
+
+                firstGuess.setAttribute("class", "taken");
+                secondGuess.setAttribute("class", "taken");
+
+                counter = 0;
 
             }
 
+            else {
+                firstGuess.setAttribute("class", "hidden");
+                secondGuess.setAttribute("class", "hidden");
+                counter = 0;
+            }
+            fin();
+        }
+        function fin() {
+            let hiddencards = document.getElementsByClassName("hidden");
+            if (hiddencards.length == 0) {
+                alert("Gut gemacht! Du hast das Spiel beendet");
+            }
         }
 
-
     }
-
-
 }
 
 

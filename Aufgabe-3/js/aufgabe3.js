@@ -54,31 +54,31 @@ var Aufgabe3;
                         div.setAttribute("class", "open");
                         div.innerText = random;
                         setTimeout(compareCards, 2000);
-                        function compareCards() {
-                            let firstGuess = document.getElementsByClassName("open")[0];
-                            let secondGuess = document.getElementsByClassName("open")[1];
-                            console.log(firstGuess);
-                            console.log(secondGuess);
-                            if (firstGuess.innerHTML == secondGuess.innerHTML) {
-                                firstGuess.setAttribute("class", "taken");
-                                secondGuess.setAttribute("class", "taken");
-                                counter = 0;
-                            }
-                            else {
-                                firstGuess.setAttribute("class", "hidden");
-                                secondGuess.setAttribute("class", "hidden");
-                                counter = 0;
-                            }
-                            fin();
-                        }
                     }
                 }
-                function fin() {
-                    let hiddencards = document.getElementsByClassName("hidden");
-                    if (hiddencards.length == 0) {
-                        alert("Gut gemacht! Du hast das Spiel beendet");
-                    }
-                }
+            }
+        }
+        function compareCards() {
+            let firstGuess = document.getElementsByClassName("open")[0];
+            let secondGuess = document.getElementsByClassName("open")[1];
+            console.log(firstGuess);
+            console.log(secondGuess);
+            if (firstGuess.innerHTML == secondGuess.innerHTML) {
+                firstGuess.setAttribute("class", "taken");
+                secondGuess.setAttribute("class", "taken");
+                counter = 0;
+            }
+            else {
+                firstGuess.setAttribute("class", "hidden");
+                secondGuess.setAttribute("class", "hidden");
+                counter = 0;
+            }
+            fin();
+        }
+        function fin() {
+            let hiddencards = document.getElementsByClassName("hidden");
+            if (hiddencards.length == 0) {
+                alert("Gut gemacht! Du hast das Spiel beendet");
             }
         }
     }
