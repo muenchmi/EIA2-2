@@ -4,7 +4,6 @@ namespace Aufgabe3 {
 
     function init(_event: Event): void {
 
-
         let getPlayerNumber: string;
         let getCardPair: string;
         let playerNumber: number;
