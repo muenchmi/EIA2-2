@@ -15,12 +15,18 @@ namespace Aufgabe3 {
 
         let counter: number = 0;
 
+        do { 
+            getPlayerNumber = prompt("Bitte geben Sie hier die Spieleranzahl an (1-4 Spieler)", "");
+            playerNumber = Number.parseInt(getPlayerNumber);
+        }
+        while (playerNumber < 1 || playerNumber > 4 || isNaN(playerNumber));
 
-        getPlayerNumber = prompt("Bitte geben Sie hier die Spieleranzahl an (1-4 Spieler)", "");
-        getCardPair = prompt("Bitte geben Sie hier die Kartenpaare an (5-10 Paare)", "");
-
-        playerNumber = Number.parseInt(getPlayerNumber);
-        cardPair = Number.parseInt(getCardPair);
+        do {
+            getCardPair = prompt("Bitte geben Sie hier die Kartenpaare an (5-10 Paare)", "");
+            cardPair = Number.parseInt(getCardPair);
+        }
+        
+        while (cardPair < 5 || cardPair > 10 || isNaN(cardPair));
 
         numberCards = cardPair * 2;
         removeCard = createCards.length - cardPair;
