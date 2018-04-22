@@ -37,39 +37,13 @@ var Aufgabe3;
         function createCard() {
             let random = createCards[Math.floor(Math.random() * createCards.length)]; //greife eine random Buchstabe aus dem array
             let position = createCards.indexOf(random); //finde die Position des Buchstabens herraus
-            //            let randomNumber: number = Math.random();
             let div = document.createElement("div");
-            //            if (randomNumber < 0.6) { //hidden
             div.setAttribute("class", "hidden");
-            //            }
-            //            else if (randomNumber < 0.8) { //open
-            //                div.setAttribute("class", "open");
-            //                div.innerText = random;
-            //            }
-            //            else { //taken
-            //                div.setAttribute("class", "taken");
-            //            }
             div.addEventListener("click", cardClicked);
             document.getElementById("game").appendChild(div);
             createCards.splice(position, 1);
-            //
-            //            function reset() {
-            //                div.classList.remove("selected");
-            //                div.innerText = "";
-            //                div.classList.remove("open")
-            //
-            //            }
-            //            function match() {
-            //                div.classList.remove("selected");
-            //                div.innerText = "";
-            //                div.classList.add("taken");
-            //            }
             function cardClicked(event) {
                 let clicked = event.target;
-                //                ein anderer Versuch (muss man nicht beachten) 
-                //                if (div.classList.contains("selected") || div.classList.contains("match")) {
-                //                  return;
-                //                }
                 if (counter < 2) {
                     counter++;
                     if (counter == 1) {
@@ -99,18 +73,6 @@ var Aufgabe3;
                         }
                     }
                 }
-                //       Wieder ein Versuch den man nicht beachten muss
-                //
-                //                        if (firstGuess && secondGuess) {
-                //
-                //                        if (compareCards) {
-                //                            window.setTimeout(match, 3000);
-                //                        }
-                //
-                //                        else {
-                //                            window.setTimeout(reset, 3000);
-                //                        }
-                //}
                 function fin() {
                     let hiddencards = document.getElementsByClassName("hidden");
                     if (hiddencards.length == 0) {

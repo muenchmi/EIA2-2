@@ -15,7 +15,7 @@ namespace Aufgabe3 {
 
         let counter: number = 0;
 
-        do { 
+        do {
             getPlayerNumber = prompt("Bitte geben Sie hier die Spieleranzahl an (1-4 Spieler)", "");
             playerNumber = Number.parseInt(getPlayerNumber);
         }
@@ -25,7 +25,7 @@ namespace Aufgabe3 {
             getCardPair = prompt("Bitte geben Sie hier die Kartenpaare an (5-10 Paare)", "");
             cardPair = Number.parseInt(getCardPair);
         }
-        
+
         while (cardPair < 5 || cardPair > 10 || isNaN(cardPair));
 
         numberCards = cardPair * 2;
@@ -52,44 +52,16 @@ namespace Aufgabe3 {
             let random: string = createCards[Math.floor(Math.random() * createCards.length)]; //greife eine random Buchstabe aus dem array
             let position: number = createCards.indexOf(random); //finde die Position des Buchstabens herraus
 
-            //            let randomNumber: number = Math.random();
             let div: HTMLDivElement = document.createElement("div");
 
-            //            if (randomNumber < 0.6) { //hidden
             div.setAttribute("class", "hidden");
-            //            }
-            //            else if (randomNumber < 0.8) { //open
-            //                div.setAttribute("class", "open");
-            //                div.innerText = random;
-            //            }
-            //            else { //taken
-            //                div.setAttribute("class", "taken");
-            //            }
+
             div.addEventListener("click", cardClicked);
-
-
 
             document.getElementById("game").appendChild(div);
             createCards.splice(position, 1);
-            //
-            //            function reset() {
-            //                div.classList.remove("selected");
-            //                div.innerText = "";
-            //                div.classList.remove("open")
-            //
-            //            }
-            //            function match() {
-            //                div.classList.remove("selected");
-            //                div.innerText = "";
-            //                div.classList.add("taken");
-            //            }
             function cardClicked(event: Event) {
                 let clicked: HTMLElement = <HTMLElement>event.target;
-
-                //                ein anderer Versuch (muss man nicht beachten) 
-                //                if (div.classList.contains("selected") || div.classList.contains("match")) {
-                //                  return;
-                //                }
 
                 if (counter < 2) {
                     counter++;
@@ -130,19 +102,6 @@ namespace Aufgabe3 {
                         }
                     }
                 }
-                //       Wieder ein Versuch den man nicht beachten muss
-                //
-                //                        if (firstGuess && secondGuess) {
-                //
-                //                        if (compareCards) {
-                //                            window.setTimeout(match, 3000);
-                //                        }
-                //
-                //                        else {
-                //                            window.setTimeout(reset, 3000);
-                //                        }
-                //}
-
                 function fin() {
                     let hiddencards = document.getElementsByClassName("hidden");
                     if (hiddencards.length == 0) {
