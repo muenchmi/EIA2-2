@@ -1,15 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
 
-
-
 body {
 	font-family: 'Press Start 2P', cursive;
-	margin: 20px 0;
+	margin: 0;
 }
 
 #players {
-	margin: 10px;
-	padding: 20px;
+	padding-left: 40px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+	background-color: black;
+	color: white;
 }
 
 #game {
@@ -23,21 +24,20 @@ div div {
 	float: left;
 	margin: 10px;
 	padding: 15px;
-	font-size: 60px;
+	font-size: 79px;
 	cursor: pointer;
 	text-align: center;
 }
 
 .hidden {
-	border : thin solid black;
-	background-color : black;
-	
+	border: thin solid black;
+	background-color: black;
 }
 
-.open{
-	border : thin solid black;
+.open {
+	border: thin solid black;
 }
 
-.taken{
-	
+.taken {
+	visibility: hidden;
 }

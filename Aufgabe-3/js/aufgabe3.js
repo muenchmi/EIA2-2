@@ -1,5 +1,5 @@
-var Aufgabe2;
-(function (Aufgabe2) {
+var Aufgabe3;
+(function (Aufgabe3) {
     window.addEventListener("load", init);
     function init(_event) {
         let getPlayerNumber;
@@ -7,19 +7,20 @@ var Aufgabe2;
         let playerNumber;
         let cardPair;
         let numberCards;
-        let creatCards = ["A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F", "G", "G", "H", "H", "I", "I", "J", "J", "K", "K", "L", "L", "M", "M", "N", "N", "O", "O", "P", "P", "Q", "Q", "R", "R", "S", "S", "T", "T", "U", "U", "V", "V", "W", "W", "X", "X", "Y", "Y", "Z", "Z"];
+        let createCards = ["A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F", "G", "G", "H", "H", "I", "I", "J", "J", "K", "K", "L", "L", "M", "M", "N", "N", "O", "O", "P", "P", "Q", "Q", "R", "R", "S", "S", "T", "T", "U", "U", "V", "V", "W", "W", "X", "X", "Y", "Y", "Z", "Z"];
         let removeCard; // bestimme die Zahl die beim splice entfernt werden soll
+        let counter = 0;
         getPlayerNumber = prompt("Bitte geben Sie hier die Spieleranzahl an (1-4 Spieler)", "");
         getCardPair = prompt("Bitte geben Sie hier die Kartenpaare an (5-10 Paare)", "");
         playerNumber = Number.parseInt(getPlayerNumber);
         cardPair = Number.parseInt(getCardPair);
         numberCards = cardPair * 2;
-        removeCard = creatCards.length - cardPair;
+        removeCard = createCards.length - cardPair;
         console.log(numberCards);
-        creatCards.splice(numberCards, removeCard); //nimm die unn�tigen Buchstaben aus dem array
+        createCards.splice(numberCards, removeCard); //nimm die unn�tigen Buchstaben aus dem array
         //Anzahl der Karten im Game Div
         for (let i = 0; i < numberCards; i++) {
-            placeDiv();
+            createCard();
         }
         //Anzahl der Spieler im Players  
         for (let i = 0; i < playerNumber; i++) {
@@ -29,45 +30,78 @@ var Aufgabe2;
             p.innerText = text;
             document.getElementById("players").appendChild(p);
         }
-        function placeDiv() {
-            let random = creatCards[Math.floor(Math.random() * creatCards.length)]; //greife eine random Buchstabe aus dem array
-            let position = creatCards.indexOf(random); //finde die Position des Buchstabens herraus
-            let randomNumber = Math.random();
+        function createCard() {
+            let random = createCards[Math.floor(Math.random() * createCards.length)]; //greife eine random Buchstabe aus dem array
+            let position = createCards.indexOf(random); //finde die Position des Buchstabens herraus
+            //            let randomNumber: number = Math.random();
             let div = document.createElement("div");
-            div.innerText = random;
-            div.addEventListener("click", function () {
-                let counter = 0;
+            //            if (randomNumber < 0.6) { //hidden
+            div.setAttribute("class", "hidden");
+            //            }
+            //            else if (randomNumber < 0.8) { //open
+            //                div.setAttribute("class", "open");
+            //                div.innerText = random;
+            //            }
+            //            else { //taken
+            //                div.setAttribute("class", "taken");
+            //            }
+            div.addEventListener("click", cardClicked);
+            document.getElementById("game").appendChild(div);
+            createCards.splice(position, 1);
+            //
+            //            function reset() {
+            //                div.classList.remove("selected");
+            //                div.innerText = "";
+            //                div.classList.remove("open")
+            //
+            //            }
+            //            function match() {
+            //                div.classList.remove("selected");
+            //                div.innerText = "";
+            //                div.classList.add("taken");
+            //            }
+            function cardClicked(event) {
                 let clicked = event.target;
-                let firstGuess = 0;
-                let secondGuess = 0;
                 if (div.classList.contains("selected") || div.classList.contains("match")) {
                     return;
                 }
                 if (counter < 2) {
                     counter++;
                     if (counter == 1) {
-                        div.classList.add("selected");
+                        div.setAttribute("class", "open");
+                        div.innerText = random;
                     }
                     else {
-                        div.classList.add("selected");
-                    }
-                    if (firstGuess && secondGuess) {
+                        div.setAttribute("class", "open");
+                        div.innerText = random;
+                        setTimeout(compareCards, 1000);
+                        function compareCards() {
+                            let firstGuess = document.getElementsByClassName("open")[0];
+                            let secondGuess = document.getElementsByClassName("open")[1];
+                            console.log(firstGuess);
+                            console.log(secondGuess);
+                            if (firstGuess.innerHTML == secondGuess.innerHTML) {
+                                firstGuess.setAttribute("class", "taken");
+                                secondGuess.setAttribute("class", "taken");
+                                counter = 0;
+                            }
+                            else {
+                                firstGuess.setAttribute("class", "hidden");
+                                secondGuess.setAttribute("class", "hidden");
+                                counter = 0;
+                            }
+                            fin();
+                        }
                     }
                 }
-            });
-            if (randomNumber < 0.6) {
-                div.setAttribute("class", "hidden");
+                function fin() {
+                    let hiddencards = document.getElementsByClassName("hidden");
+                    if (hiddencards.length == 0) {
+                        alert("Gut gemacht! Du hast das Spiel beendet");
+                    }
+                }
             }
-            if (randomNumber > 0.6 && randomNumber < 0.8) {
-                div.setAttribute("class", "open");
-                div.innerText = random;
-            }
-            else if (randomNumber > 0.8) {
-                div.setAttribute("class", "taken");
-            }
-            document.getElementById("game").appendChild(div);
-            creatCards.splice(position, 1);
         }
     }
-})(Aufgabe2 || (Aufgabe2 = {}));
+})(Aufgabe3 || (Aufgabe3 = {}));
 //# sourceMappingURL=aufgabe3.js.map
