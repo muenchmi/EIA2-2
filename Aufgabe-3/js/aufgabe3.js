@@ -62,9 +62,10 @@ var Aufgabe3;
             //            }
             function cardClicked(event) {
                 let clicked = event.target;
-                if (div.classList.contains("selected") || div.classList.contains("match")) {
-                    return;
-                }
+                //                ein anderer Versuch (muss man nicht beachten) 
+                //                if (div.classList.contains("selected") || div.classList.contains("match")) {
+                //                  return;
+                //                }
                 if (counter < 2) {
                     counter++;
                     if (counter == 1) {
@@ -74,7 +75,7 @@ var Aufgabe3;
                     else {
                         div.setAttribute("class", "open");
                         div.innerText = random;
-                        setTimeout(compareCards, 1000);
+                        setTimeout(compareCards, 2000);
                         function compareCards() {
                             let firstGuess = document.getElementsByClassName("open")[0];
                             let secondGuess = document.getElementsByClassName("open")[1];
@@ -94,6 +95,18 @@ var Aufgabe3;
                         }
                     }
                 }
+                //       Wieder ein Versuch den man nicht beachten muss
+                //
+                //                        if (firstGuess && secondGuess) {
+                //
+                //                        if (compareCards) {
+                //                            window.setTimeout(match, 3000);
+                //                        }
+                //
+                //                        else {
+                //                            window.setTimeout(reset, 3000);
+                //                        }
+                //}
                 function fin() {
                     let hiddencards = document.getElementsByClassName("hidden");
                     if (hiddencards.length == 0) {

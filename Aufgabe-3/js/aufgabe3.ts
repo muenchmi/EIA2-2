@@ -80,9 +80,11 @@ namespace Aufgabe3 {
             function cardClicked(event: Event) {
                 let clicked: HTMLElement = <HTMLElement>event.target;
 
-                if (div.classList.contains("selected") || div.classList.contains("match")) {
-                    return;
-                }
+                //                ein anderer Versuch (muss man nicht beachten) 
+                //                if (div.classList.contains("selected") || div.classList.contains("match")) {
+                //                  return;
+                //                }
+
                 if (counter < 2) {
                     counter++;
                     if (counter == 1) {
@@ -95,7 +97,7 @@ namespace Aufgabe3 {
                         div.innerText = random;
 
 
-                        setTimeout(compareCards, 1000);
+                        setTimeout(compareCards, 2000);
 
                         function compareCards() {
                             let firstGuess = document.getElementsByClassName("open")[0];
@@ -121,17 +123,20 @@ namespace Aufgabe3 {
                             fin();
                         }
                     }
-                    //                    if (firstGuess && secondGuess) {
-                    //
-                    //                        if (compareCards) {
-                    //                            window.setTimeout(match, 3000);
-                    //                        }
-                    //
-                    //                        else {
-                    //                            window.setTimeout(reset, 3000);
-                    //                        }
-                    //}
                 }
+                //       Wieder ein Versuch den man nicht beachten muss
+                //
+                //                        if (firstGuess && secondGuess) {
+                //
+                //                        if (compareCards) {
+                //                            window.setTimeout(match, 3000);
+                //                        }
+                //
+                //                        else {
+                //                            window.setTimeout(reset, 3000);
+                //                        }
+                //}
+
                 function fin() {
                     let hiddencards = document.getElementsByClassName("hidden");
                     if (hiddencards.length == 0) {
