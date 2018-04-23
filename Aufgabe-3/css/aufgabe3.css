@@ -16,6 +16,8 @@ body {
 #game {
 	margin: 10px;
 	padding: 20px;
+	height: auto;
+	width: 95%;
 }
 
 div div {
