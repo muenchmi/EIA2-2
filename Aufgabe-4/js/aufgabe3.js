@@ -77,7 +77,7 @@ var Aufgabe3;
         function fin() {
             let hiddencards = document.getElementsByClassName("hidden");
             if (hiddencards.length == 0) {
-                alert("Gut gemacht! Du hast das Spiel beendet.");
+                alert("Gut gemacht! Du hast das Spiel beendet");
             }
         }
     }

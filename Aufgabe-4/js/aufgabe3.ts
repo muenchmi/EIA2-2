@@ -98,13 +98,13 @@ namespace Aufgabe3 {
                 secondGuess.setAttribute("class", "hidden");
                 counter = 0;
             }
-
+            
             fin();
         }
         function fin(): void {
             let hiddencards: any = document.getElementsByClassName("hidden");
             if (hiddencards.length == 0) {
-                alert("Gut gemacht! Du hast das Spiel beendet.");
+                alert("Gut gemacht! Du hast das Spiel beendet");
             }
         }
     }
