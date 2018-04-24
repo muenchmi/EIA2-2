@@ -1,5 +1,5 @@
-var Aufgabe3;
-(function (Aufgabe3) {
+var Aufgabe4;
+(function (Aufgabe4) {
     window.addEventListener("load", init);
     function init(_event) {
         let getPlayerNumber;
@@ -81,5 +81,5 @@ var Aufgabe3;
             }
         }
     }
-})(Aufgabe3 || (Aufgabe3 = {}));
+})(Aufgabe4 || (Aufgabe4 = {}));
 //# sourceMappingURL=aufgabe4.js.map
