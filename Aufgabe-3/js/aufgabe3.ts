@@ -10,7 +10,7 @@ namespace Aufgabe3 {
         let cardPair: number;
         let numberCards: number;
         let createCards: string[] = ["A", "A", "B", "B", "C", "C", "D", "D", "E", "E", "F", "F", "G", "G", "H", "H", "I", "I", "J", "J", "K", "K", "L", "L", "M", "M", "N", "N", "O", "O", "P", "P", "Q", "Q", "R", "R", "S", "S", "T", "T", "U", "U", "V", "V", "W", "W", "X", "X", "Y", "Y", "Z", "Z"];
-        let removeCard: number; // bestimme die Zahl die beim splice entfernt werden soll
+        let removeCard: number; 
 
         let counter: number = 0;
 
@@ -30,15 +30,13 @@ namespace Aufgabe3 {
         numberCards = cardPair * 2;
         removeCard = createCards.length - cardPair;
         console.log(numberCards);
-        createCards.splice(numberCards, removeCard); //nimm die unnötigen Buchstaben aus dem array
+        createCards.splice(numberCards, removeCard);
 
-        //Anzahl der Karten im Game Div
+       
 
         for (let i: number = 0; i < numberCards; i++) {
             createCard();
         }
-
-        //Anzahl der Spieler im Players  
 
         for (let i: number = 0; i < playerNumber; i++) {
             let p: HTMLParagraphElement = document.createElement("p");
@@ -50,8 +48,8 @@ namespace Aufgabe3 {
         }
 
         function createCard(): void {
-            let random: string = createCards[Math.floor(Math.random() * createCards.length)]; //greife eine random Buchstabe aus dem array
-            let position: number = createCards.indexOf(random); //finde die Position des Buchstabens herraus
+            let random: string = createCards[Math.floor(Math.random() * createCards.length)]; 
+            let position: number = createCards.indexOf(random); 
 
             let div: HTMLDivElement = document.createElement("div");
 
