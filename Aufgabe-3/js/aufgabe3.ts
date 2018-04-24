@@ -1,5 +1,5 @@
 namespace Aufgabe3 {
-
+    
     window.addEventListener("load", init);
 
     let getPlayerNumber: string;
