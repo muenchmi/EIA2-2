@@ -91,7 +91,6 @@ namespace Aufgabe3 {
                 secondGuess.setAttribute("class", "taken");
 
                 counter = 0;
-
             }
 
             else {
@@ -99,6 +98,7 @@ namespace Aufgabe3 {
                 secondGuess.setAttribute("class", "hidden");
                 counter = 0;
             }
+            
             fin();
         }
         function fin(): void {
