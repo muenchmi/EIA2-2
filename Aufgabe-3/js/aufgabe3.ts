@@ -77,7 +77,7 @@ namespace Aufgabe3 {
                 }
             }
         }
-
+        
         function compareCards(): void {
             let firstGuess: any = document.getElementsByClassName("open")[0];
             let secondGuess: any = document.getElementsByClassName("open")[1];
@@ -101,6 +101,7 @@ namespace Aufgabe3 {
 
             fin();
         }
+        
         function fin(): void {
             let hiddencards: any = document.getElementsByClassName("hidden");
             if (hiddencards.length == 0) {
