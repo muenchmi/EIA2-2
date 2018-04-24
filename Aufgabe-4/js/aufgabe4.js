@@ -82,4 +82,4 @@ var Aufgabe3;
         }
     }
 })(Aufgabe3 || (Aufgabe3 = {}));
-//# sourceMappingURL=aufgabe3.js.map
+//# sourceMappingURL=aufgabe4.js.map
