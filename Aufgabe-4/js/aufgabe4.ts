@@ -1,5 +1,5 @@
 namespace Aufgabe3 {
-    
+
     window.addEventListener("load", init);
 
     let getPlayerNumber: string;
@@ -11,7 +11,7 @@ namespace Aufgabe3 {
     let removeCard: number;
 
     let counter: number = 0;
-    
+
     function init(_event: Event): void {
 
         do {
@@ -45,7 +45,7 @@ namespace Aufgabe3 {
 
         }
     }
-    
+
     function createCard(): void {
         let random: string = createCards[Math.floor(Math.random() * createCards.length)];
         let position: number = createCards.indexOf(random);
@@ -69,8 +69,13 @@ namespace Aufgabe3 {
 
             }
             else {
-                clicked.setAttribute("class", "open");
-                setTimeout(compareCards, 2000);
+                if (clicked.classList.contains("open") || clicked.classList.contains("taken")) {
+                    counter = 1;
+                }
+                else {
+                    clicked.setAttribute("class", "open");
+                    setTimeout(compareCards, 2000);
+                }
             }
         }
     }

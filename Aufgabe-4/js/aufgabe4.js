@@ -51,8 +51,13 @@ var Aufgabe3;
                 clicked.setAttribute("class", "open");
             }
             else {
-                clicked.setAttribute("class", "open");
-                setTimeout(compareCards, 2000);
+                if (clicked.classList.contains("open") || clicked.classList.contains("taken")) {
+                    counter = 1;
+                }
+                else {
+                    clicked.setAttribute("class", "open");
+                    setTimeout(compareCards, 2000);
+                }
             }
         }
     }
@@ -80,4 +85,4 @@ var Aufgabe3;
         }
     }
 })(Aufgabe3 || (Aufgabe3 = {}));
-//# sourceMappingURL=aufgabe3.js.map
+//# sourceMappingURL=aufgabe4.js.map
