@@ -43,3 +43,9 @@ div div {
 .taken {
 	visibility: hidden;
 }
+.hidden2{
+	visibility: hidden;
+}
+.open2{
+	visibility: visible;
+	}

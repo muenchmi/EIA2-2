@@ -12,16 +12,54 @@ Hiermit versichere ich, dass ich diesen Code selbst geschrieben habe. Er wurde n
 
 <meta charset="utf-8">
 
-<title>Michelle Münch - Aufgabe 3</title>
+<title>Michelle Münch - Aufgabe 4</title>
 <meta name="description" content="EIA2 - Aufgabe 4">
 <meta name="author" content="Michelle Münch">
-
+<script src="js/formular.js"></script>
 <link rel="stylesheet" type="text/css" href="css/aufgabe4.css">
-<script src="js/aufgabe4.js"></script>
+
 
 </head>
 <body>
-	<header id= "players"></header>
-	<div id= "game"></div> 
+	<fieldset class = "fieldset" id="cards">
+		<legend>Karten </legend>
+		<button name="Button" type="button" id="Tiere">Tiere</button>		
+		<input type="number" name="Stepper" step="1" min="1" max="26" value="0" class="hidden2" id="animalinput"/>
+		<button name="Button" type="button" id="ABC">ABC</button>	
+		<input type="number" name="Stepper" step="1" min="1" max="11" value="0" class="hidden2" id="ABCinput"/>	
+		<button name="Button" type="button" id="123">123</button>
+		<input type="number" name="Stepper" step="1" min="1" max="10" value="0" class="hidden2" id="numberinput"/>
+		
+		
+		<!-- <input type="radio" name="Radiogroup" value="Tiere" id="radio1" /> <label
+			for="radio1">Tiere</label> <input type="radio" name="Radiogroup"
+			value="ABC" id="radio2" /> <label for="radio2">ABC</label> <input
+			type="radio" name="Radiogroup" value="Essen" id="radio3" /> <label
+			for="radio3">123</label> -->
+	</fieldset>
+	<fieldset class = "fieldset">
+		<legend>Spieler</legend>
+		<button name="Button" type="button" id="Spieler1">Spieler 1</button>
+		<input type="text" name="input1" id="spielerinput1" class="hidden2"/>
+		<button name="Button" type="button" id="Spieler2">Spieler 2</button>
+		<input type="text" name="input2" id="spielerinput2" class="hidden2"/>
+		<button name="Button" type="button" id="Spieler3" >Spieler 3</button>
+		<input type="text" name="input3" id="spielerinput3" class="hidden2"/>
+		<button name="Button" type="button" id="Spieler4" >Spieler 4</button>
+		<input type="text" name="input4" id="spielerinput4" class="hidden2"/>
+	</fieldset>
+	
+	<button name="Button" type="button" id="startgame">Start</button>
+
+	<header id="players">
+	<div id="player1"></div>
+	<div id="player2"></div>
+	<div id="player3"></div>
+	<div id="player4"></div>
+	
+	
+	</header>
+	<div id="game"></div>
+	<script src="js/aufgabe4.js"></script>
 </body>
 </html>
