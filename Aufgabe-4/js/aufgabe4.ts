@@ -1,8 +1,5 @@
 namespace Aufgabe4 {
 
-    window.addEventListener("load", init);
-    function init(_event: Event): void { }
-
     let getPlayerNumber: string;
     let getCardPair: string;
     let playerNumber: number;
@@ -29,28 +26,34 @@ namespace Aufgabe4 {
     player3Button.addEventListener("click", player3Input);
     player4Button.addEventListener("click", player4Input);
 
-    let animaleButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("Tiere");
+    let specialButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("special");
     let abcButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("ABC");
     let numberButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("123");
 
-    let animalinput: HTMLInputElement = <HTMLInputElement>document.getElementById("animalinput");
+    let specialinput: HTMLInputElement = <HTMLInputElement>document.getElementById("specialinput");
     let abcinput: HTMLInputElement = <HTMLInputElement>document.getElementById("ABCinput");
     let numberinput: HTMLInputElement = <HTMLInputElement>document.getElementById("numberinput");
 
-    animaleButton.addEventListener("click", animalInput);
+    specialButton.addEventListener("click", specialInput);
     abcButton.addEventListener("click", abcInput);
     numberButton.addEventListener("click", numberInput);
 
-    function animalInput(): void {
-        animalinput.setAttribute("class", "open2");        
+    function specialInput(): void {
+        specialinput.setAttribute("class", "open2");
+        abcinput.setAttribute("class", "hidden2");
+        numberinput.setAttribute("class", "hidden2");
     }
 
     function abcInput(): void {
         abcinput.setAttribute("class", "open2");
+        specialinput.setAttribute("class", "hidden2");
+        numberinput.setAttribute("class", "hidden2");
     }
 
     function numberInput(): void {
         numberinput.setAttribute("class", "open2");
+        abcinput.setAttribute("class", "hidden2");
+        specialinput.setAttribute("class", "hidden2");
     }
 
     let startGame: HTMLButtonElement = <HTMLInputElement>document.getElementById("startgame");
@@ -59,43 +62,48 @@ namespace Aufgabe4 {
 
     function gameStart(): void {
 
-        let inputvalue1 = player1input.value;
-        let inputvalue2 = player2input.value;
-        let inputvalue3 = player3input.value;
-        let inputvalue4 = player4input.value;
+        let inputvalue1: string = player1input.value;
+        let inputvalue2: string = player2input.value;
+        let inputvalue3: string = player3input.value;
+        let inputvalue4: string = player4input.value;
 
-        let player1 = document.getElementById("player1");
-        let player2 = document.getElementById("player2");
-        let player3 = document.getElementById("player3");
-        let player4 = document.getElementById("player4");
+        let player1: HTMLElement = document.getElementById("player1");
+        let player2: HTMLElement = document.getElementById("player2");
+        let player3: HTMLElement = document.getElementById("player3");
+        let player4: HTMLElement = document.getElementById("player4");
 
         player1.innerText = inputvalue1;
         player2.innerText = inputvalue2;
         player3.innerText = inputvalue3;
         player4.innerText = inputvalue4;
 
-        cardNamevalue1 = animalinput.value;
+        console.log(inputvalue3);
+        
+        cardNamevalue1 = specialinput.value;
         cardNamevalue2 = abcinput.value;
         cardNamevalue3 = numberinput.value;
 
-        let animalCardPair: number = Number.parseInt(cardNamevalue1);
+        let specialCardPair: number = Number.parseInt(cardNamevalue1);
         let abcCardPair: number = Number.parseInt(cardNamevalue2);
         let numberCardPair: number = Number.parseInt(cardNamevalue3);
 
         if (abcCardPair == 0 && numberCardPair == 0) {
-            cardPair = animalCardPair;
-            createCards = Tiere.name;
+            cardPair = specialCardPair;
+            createCards = arraySpecialcharacters.name;
 
         }
-        else if (animalCardPair == 0 && numberCardPair == 0) {
+        else if (specialCardPair == 0 && numberCardPair == 0) {
             cardPair = abcCardPair;
             createCards = ABC.name;
 
         }
-        else if (animalCardPair == 0 && abcCardPair == 0) {
+        else if (specialCardPair == 0 && abcCardPair == 0) {
             cardPair = numberCardPair;
-            createCards = Zahlen.name;
+            createCards = arrayNumbers.name;
         }
+        
+        
+        
         numberCards = cardPair * 2;
         removeCard = createCards.length - cardPair;
         console.log(numberCards);
@@ -108,47 +116,51 @@ namespace Aufgabe4 {
 
         let hideFieldset1: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementsByTagName("fieldset")[0];
         let hideFieldset2: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementsByTagName("fieldset")[1];
-
-        hideFieldset1.setAttribute("class", "hidden2");
-        hideFieldset2.setAttribute("class", "hidden2");
-        animalinput.setAttribute("class", "hidden2");
+        let showHeader: HTMLElement = <HTMLElement>document.getElementsByTagName("header")[0];
+        
+        showHeader.setAttribute("class", "open2");
+        hideFieldset1.setAttribute("class", "hidden3");
+        hideFieldset2.setAttribute("class", "hidden3");
+        specialinput.setAttribute("class", "hidden2");
         abcinput.setAttribute("class", "hidden2");
-        startGame.setAttribute("class", "hidden2");
+        startGame.setAttribute("class", "hidden3");
         player1input.setAttribute("class", "hidden2");
         player2input.setAttribute("class", "hidden2");
         player3input.setAttribute("class", "hidden2");
+        player4input.setAttribute("class", "hidden2");
         numberinput.setAttribute("class", "hidden2");
 
     }
 
     let counter: number = 0;
 
-    function player1Input(_e: Event): string {
+    function player1Input(): void {
         player1input.setAttribute("class", "open2");
-        let playerName = document.getElementsByTagName("input")[4];
-        let playerNamevalue1 = playerName.value;
-        return playerNamevalue1;
+        player2input.setAttribute("class", "hidden2");
+        player3input.setAttribute("class", "hidden2");
+        player4input.setAttribute("class", "hidden2");
     }
 
-    function player2Input(_event: Event): string {
+    function player2Input(): void {
+        player1input.setAttribute("class", "open2");
         player2input.setAttribute("class", "open2");
-        let playerName = document.getElementsByTagName("input")[5];
-        let playerNamevalue2 = playerName.value;
-        return playerNamevalue2;
+        player3input.setAttribute("class", "hidden2");
+        player4input.setAttribute("class", "hidden2");
     }
 
-    function player3Input(_event: Event): string {
+    function player3Input(): void {
+        player1input.setAttribute("class", "open2");
+        player2input.setAttribute("class", "open2");
         player3input.setAttribute("class", "open2");
-        let playerName = document.getElementsByTagName("input")[6];
-        let playerNamevalue3 = playerName.value;
-        return playerNamevalue3;
+        player4input.setAttribute("class", "hidden2");
     }
 
-    function player4Input(_event: Event): string {
+    function player4Input(): void {
+        player1input.setAttribute("class", "open2");
+        player2input.setAttribute("class", "open2");
+        player3input.setAttribute("class", "open2");
         player4input.setAttribute("class", "open2");
-        let playerName = document.getElementsByTagName("input")[7];
-        let playerNamevalue4 = playerName.value;
-        return playerNamevalue4;
+
     }
 
 

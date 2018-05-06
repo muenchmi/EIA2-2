@@ -49,21 +49,9 @@ var L04_Interfaces;
     function refresh(_event) {
         let output = document.getElementsByTagName("textarea")[0];
         output.value = "";
-        // for-in-Schleife iteriert über die Schlüssel des assoziativen Arrays
-        for (let matrikel in L04_Interfaces.studiHomoAssoc) {
-            let studi = L04_Interfaces.studiHomoAssoc[matrikel];
-            let line = matrikel + ": ";
-            line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahre" + ", " + studi.studiengang;
-            line += studi.gender ? "(M)" : "(F)";
-            output.value += line + "\n";
-        }
-        // zusätzliche Konsolenausgaben zur Demonstratio
-        console.group("Simple Array");
-        console.log(L04_Interfaces.studiSimpleArray);
-        console.groupEnd();
-        console.group("Associatives Array (Object)");
-        console.log(L04_Interfaces.studiHomoAssoc);
-        console.groupEnd();
+        // for-in-Schleife iteriert über die Schlüssel des assoziativen Arrays          for (let matrikel in studiHomoAssoc) {  // Besonderheit: Type-Annotation nicht erlaubt, ergibt sich aus der Interface-Definition              let studi: Studi = studiHomoAssoc[matrikel];              let line: string = matrikel + ": ";              line += studi.name + ", " + studi.firstname + ", " + studi.age + " Jahr   + ", " + studi.studiengang;              line += studi.gender ? "(M)" : "(F)";              output.value += line + "\n";          }
+        // zusätzliche Konsolenausgaben zur Demonstrati           console.group("Simple Arra              console.log(studiSimpleArr              console.groupEnd();
+        //     console.group("Associatives Array (Object              console.log(studiHomoAss              console.groupEn          }
     }
 })(L04_Interfaces || (L04_Interfaces = {}));
 //# sourceMappingURL=ProcessForm.js.map

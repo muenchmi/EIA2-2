@@ -1,7 +1,5 @@
 var Aufgabe4;
 (function (Aufgabe4) {
-    window.addEventListener("load", init);
-    function init(_event) { }
     let getPlayerNumber;
     let getCardPair;
     let playerNumber;
@@ -24,23 +22,29 @@ var Aufgabe4;
     player2Button.addEventListener("click", player2Input);
     player3Button.addEventListener("click", player3Input);
     player4Button.addEventListener("click", player4Input);
-    let animaleButton = document.getElementById("Tiere");
+    let specialButton = document.getElementById("special");
     let abcButton = document.getElementById("ABC");
     let numberButton = document.getElementById("123");
-    let animalinput = document.getElementById("animalinput");
+    let specialinput = document.getElementById("specialinput");
     let abcinput = document.getElementById("ABCinput");
     let numberinput = document.getElementById("numberinput");
-    animaleButton.addEventListener("click", animalInput);
+    specialButton.addEventListener("click", specialInput);
     abcButton.addEventListener("click", abcInput);
     numberButton.addEventListener("click", numberInput);
-    function animalInput() {
-        animalinput.setAttribute("class", "open2");
+    function specialInput() {
+        specialinput.setAttribute("class", "open2");
+        abcinput.setAttribute("class", "hidden2");
+        numberinput.setAttribute("class", "hidden2");
     }
     function abcInput() {
         abcinput.setAttribute("class", "open2");
+        specialinput.setAttribute("class", "hidden2");
+        numberinput.setAttribute("class", "hidden2");
     }
     function numberInput() {
         numberinput.setAttribute("class", "open2");
+        abcinput.setAttribute("class", "hidden2");
+        specialinput.setAttribute("class", "hidden2");
     }
     let startGame = document.getElementById("startgame");
     startGame.addEventListener("click", gameStart);
@@ -57,23 +61,24 @@ var Aufgabe4;
         player2.innerText = inputvalue2;
         player3.innerText = inputvalue3;
         player4.innerText = inputvalue4;
-        cardNamevalue1 = animalinput.value;
+        console.log(inputvalue3);
+        cardNamevalue1 = specialinput.value;
         cardNamevalue2 = abcinput.value;
         cardNamevalue3 = numberinput.value;
-        let animalCardPair = Number.parseInt(cardNamevalue1);
+        let specialCardPair = Number.parseInt(cardNamevalue1);
         let abcCardPair = Number.parseInt(cardNamevalue2);
         let numberCardPair = Number.parseInt(cardNamevalue3);
         if (abcCardPair == 0 && numberCardPair == 0) {
-            cardPair = animalCardPair;
-            createCards = Aufgabe4.Tiere.name;
+            cardPair = specialCardPair;
+            createCards = Aufgabe4.arraySpecialcharacters.name;
         }
-        else if (animalCardPair == 0 && numberCardPair == 0) {
+        else if (specialCardPair == 0 && numberCardPair == 0) {
             cardPair = abcCardPair;
             createCards = Aufgabe4.ABC.name;
         }
-        else if (animalCardPair == 0 && abcCardPair == 0) {
+        else if (specialCardPair == 0 && abcCardPair == 0) {
             cardPair = numberCardPair;
-            createCards = Aufgabe4.Zahlen.name;
+            createCards = Aufgabe4.arrayNumbers.name;
         }
         numberCards = cardPair * 2;
         removeCard = createCards.length - cardPair;
@@ -84,40 +89,43 @@ var Aufgabe4;
         }
         let hideFieldset1 = document.getElementsByTagName("fieldset")[0];
         let hideFieldset2 = document.getElementsByTagName("fieldset")[1];
-        hideFieldset1.setAttribute("class", "hidden2");
-        hideFieldset2.setAttribute("class", "hidden2");
-        animalinput.setAttribute("class", "hidden2");
+        let showHeader = document.getElementsByTagName("header")[0];
+        showHeader.setAttribute("class", "open2");
+        hideFieldset1.setAttribute("class", "hidden3");
+        hideFieldset2.setAttribute("class", "hidden3");
+        specialinput.setAttribute("class", "hidden2");
         abcinput.setAttribute("class", "hidden2");
-        startGame.setAttribute("class", "hidden2");
+        startGame.setAttribute("class", "hidden3");
         player1input.setAttribute("class", "hidden2");
         player2input.setAttribute("class", "hidden2");
         player3input.setAttribute("class", "hidden2");
+        player4input.setAttribute("class", "hidden2");
         numberinput.setAttribute("class", "hidden2");
     }
     let counter = 0;
-    function player1Input(_e) {
+    function player1Input() {
         player1input.setAttribute("class", "open2");
-        let playerName = document.getElementsByTagName("input")[4];
-        let playerNamevalue1 = playerName.value;
-        return playerNamevalue1;
+        player2input.setAttribute("class", "hidden2");
+        player3input.setAttribute("class", "hidden2");
+        player4input.setAttribute("class", "hidden2");
     }
-    function player2Input(_event) {
+    function player2Input() {
+        player1input.setAttribute("class", "open2");
         player2input.setAttribute("class", "open2");
-        let playerName = document.getElementsByTagName("input")[5];
-        let playerNamevalue2 = playerName.value;
-        return playerNamevalue2;
+        player3input.setAttribute("class", "hidden2");
+        player4input.setAttribute("class", "hidden2");
     }
-    function player3Input(_event) {
+    function player3Input() {
+        player1input.setAttribute("class", "open2");
+        player2input.setAttribute("class", "open2");
         player3input.setAttribute("class", "open2");
-        let playerName = document.getElementsByTagName("input")[6];
-        let playerNamevalue3 = playerName.value;
-        return playerNamevalue3;
+        player4input.setAttribute("class", "hidden2");
     }
-    function player4Input(_event) {
+    function player4Input() {
+        player1input.setAttribute("class", "open2");
+        player2input.setAttribute("class", "open2");
+        player3input.setAttribute("class", "open2");
         player4input.setAttribute("class", "open2");
-        let playerName = document.getElementsByTagName("input")[7];
-        let playerNamevalue4 = playerName.value;
-        return playerNamevalue4;
     }
     function createCard() {
         let random = createCards[Math.floor(Math.random() * createCards.length)];
