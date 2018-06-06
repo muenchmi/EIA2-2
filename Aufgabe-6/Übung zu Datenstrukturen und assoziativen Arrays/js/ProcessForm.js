@@ -3,6 +3,7 @@ var L06_Interfaces;
     window.addEventListener("load", init);
     let address = "https://eia2-nodetest-muenchmi.herokuapp.com";
     let inputs = document.getElementsByTagName("input");
+    //test
     function init(_event) {
         console.log("Init");
         let insertButton = document.getElementById("insert");

@@ -5,7 +5,7 @@ namespace L06_Interfaces {
 
        let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
 
-
+//test
     function init(_event: Event): void {
         console.log("Init");
         let insertButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("insert");
