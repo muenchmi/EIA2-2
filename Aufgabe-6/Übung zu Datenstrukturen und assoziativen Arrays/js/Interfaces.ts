@@ -1,5 +1,5 @@
 namespace L06_Interfaces {
-      // Struktur des heterogenen assoziativen Arrays als Datensatz für einen Studenten
+ // Struktur des heterogenen assoziativen Arrays als Datensatz für einen Studenten
     export interface Studi {
         name: string;
         firstname: string;

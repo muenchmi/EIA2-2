@@ -3,7 +3,8 @@ namespace L06_Interfaces {
 
     let address: string = "https://eia2-nodetest-muenchmi.herokuapp.com";
 
-       let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
+      
+    let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
 
 
     function init(_event: Event): void {
