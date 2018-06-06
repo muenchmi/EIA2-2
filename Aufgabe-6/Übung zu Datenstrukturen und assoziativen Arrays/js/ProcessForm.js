@@ -7,16 +7,14 @@ var L06_Interfaces;
         console.log("Init");
         let insertButton = document.getElementById("insert");
         let refreshButton = document.getElementById("refresh");
-        let searchButton = document.getElementById("searchbutton");
+        let searchButton = document.getElementById("checkSearch");
         insertButton.addEventListener("click", insert);
         refreshButton.addEventListener("click", refresh);
-        searchButton.addEventListener("click", searchmatrikel);
+        searchButton.addEventListener("click", search);
     }
     function insert(_event) {
         let genderButton = document.getElementById("male");
         let matrikel = inputs[2].value;
-        let studiengang = document.getElementsByTagName("select")[0];
-        let savestudiengang = studiengang.value;
         let studi;
         studi = {
             name: inputs[0].value,
@@ -24,18 +22,16 @@ var L06_Interfaces;
             matrikel: parseInt(matrikel),
             age: parseInt(inputs[3].value),
             gender: genderButton.checked,
-            studiengang: savestudiengang
+            studiengang: document.getElementsByTagName("select").item(0).value
         };
-        console.log(studi);
-        console.log(studi.age);
-        console.log(studi["age"]);
-        let convertstringifyJSON = JSON.stringify(studi);
+        let convert = JSON.stringify(studi);
+        console.log(convert);
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", address + "?order=insert&data=" + convertstringifyJSON, true);
-        xhr.addEventListener("readystatechange", handleStateChange);
+        xhr.open("GET", address + "?command=insert&data=" + convert, true);
+        xhr.addEventListener("readystatechange", handleStateChangeInsert);
         xhr.send();
     }
-    function handleStateChange(_event) {
+    function handleStateChangeInsert(_event) {
         var xhr = _event.target;
         if (xhr.readyState == XMLHttpRequest.DONE) {
             alert(xhr.response);
@@ -43,11 +39,11 @@ var L06_Interfaces;
     }
     function refresh(_event) {
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", address + "?order=refresh", true);
-        xhr.addEventListener("readystatechange", handleRefresh);
+        xhr.open("GET", address + "?command=refresh", true);
+        xhr.addEventListener("readystatechange", handleStateChangeRefresh);
         xhr.send();
     }
-    function handleRefresh(_event) {
+    function handleStateChangeRefresh(_event) {
         let output = document.getElementsByTagName("textarea")[0];
         output.value = "";
         var xhr = _event.target;
@@ -55,20 +51,20 @@ var L06_Interfaces;
             output.value += xhr.response;
         }
     }
-    function searchmatrikel(_event) {
+    function search(_event) {
         let mtrkl = inputs[6].value;
         let xhr = new XMLHttpRequest();
-        xhr.open("GET", address + "?order=search&searchFor=" + mtrkl, true);
-        xhr.addEventListener("readystatechange", handleSearch);
+        xhr.open("GET", address + "?command=search&searchFor=" + mtrkl, true);
+        xhr.addEventListener("readystatechange", handleStateChangeSearch);
         xhr.send();
     }
-})(L06_Interfaces || (L06_Interfaces = {}));
-function handleSearch(_event) {
-    let output = document.getElementsByTagName("textarea")[1];
-    output.value = "";
-    var xhr = _event.target;
-    if (xhr.readyState == XMLHttpRequest.DONE) {
-        output.value += xhr.response;
+    function handleStateChangeSearch(_event) {
+        let output = document.getElementsByTagName("textarea")[1];
+        output.value = "";
+        var xhr = _event.target;
+        if (xhr.readyState == XMLHttpRequest.DONE) {
+            output.value += xhr.response;
+        }
     }
-}
+})(L06_Interfaces || (L06_Interfaces = {}));
 //# sourceMappingURL=ProcessForm.js.map
