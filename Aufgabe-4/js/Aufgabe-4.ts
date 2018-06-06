@@ -5,8 +5,9 @@ namespace Aufgabe4 {
     let playerNumber: number;
     let cardPair: number;
     let numberCards: number;
-    let createCards: string[];
+    let createGame: string[];
     let removeCard: number;
+    let amount: number = 1;
     let cardNamevalue1: string;
     let cardNamevalue2: string;
     let cardNamevalue3: string;
@@ -30,30 +31,68 @@ namespace Aufgabe4 {
     let abcButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("ABC");
     let numberButton: HTMLButtonElement = <HTMLButtonElement>document.getElementById("123");
 
-    let specialinput: HTMLInputElement = <HTMLInputElement>document.getElementById("specialinput");
-    let abcinput: HTMLInputElement = <HTMLInputElement>document.getElementById("ABCinput");
-    let numberinput: HTMLInputElement = <HTMLInputElement>document.getElementById("numberinput");
+
 
     specialButton.addEventListener("click", specialInput);
     abcButton.addEventListener("click", abcInput);
     numberButton.addEventListener("click", numberInput);
 
     function specialInput(): void {
-        specialinput.setAttribute("class", "open2");
-        abcinput.setAttribute("class", "hidden2");
-        numberinput.setAttribute("class", "hidden2");
+        if (amount == 1) {
+
+            let input: HTMLInputElement = document.createElement("input");
+            input.type = "number";
+            input.min = "1";
+            input.id = "specialinput";
+            input.max = arrayCards["special"].length
+            document.getElementById("cards").appendChild(input);
+            amount++;
+        }
+        else {
+            removeinput();
+            amount = 1;
+        }
+    }
+
+    function removeinput(): void {
+        let input: HTMLInputElement = document.getElementsByTagName("input")[0];
+        input.value = "0";
+        document.getElementById("cards").removeChild(input);
+
+
     }
 
     function abcInput(): void {
-        abcinput.setAttribute("class", "open2");
-        specialinput.setAttribute("class", "hidden2");
-        numberinput.setAttribute("class", "hidden2");
-    }
+        if (amount == 1) {
 
+            let input: HTMLInputElement = document.createElement("input");
+            input.type = "number";
+            input.min = "1";
+            input.id = "ABCinput";
+            input.max = arrayCards["ABC"].length
+            document.getElementById("cards").appendChild(input);
+            amount++;
+        }
+        else {
+            removeinput();
+            amount = 1;
+        }
+    }
     function numberInput(): void {
-        numberinput.setAttribute("class", "open2");
-        abcinput.setAttribute("class", "hidden2");
-        specialinput.setAttribute("class", "hidden2");
+        if (amount == 1) {
+
+            let input: HTMLInputElement = document.createElement("input");
+            input.type = "number";
+            input.min = "1";
+            input.id = "numberinput";
+            input.max = arrayCards["numbers"].length
+            document.getElementById("cards").appendChild(input);
+            amount++;
+        }
+        else {
+            removeinput();
+            amount = 1;
+        }
     }
 
     let startGame: HTMLButtonElement = <HTMLInputElement>document.getElementById("startgame");
@@ -78,37 +117,58 @@ namespace Aufgabe4 {
         player4.innerText = inputvalue4;
 
         console.log(inputvalue3);
-        
-        cardNamevalue1 = specialinput.value;
-        cardNamevalue2 = abcinput.value;
-        cardNamevalue3 = numberinput.value;
+
+
+        let specialinput: HTMLInputElement = <HTMLInputElement>document.getElementById("specialinput");
+        let abcinput: HTMLInputElement = <HTMLInputElement>document.getElementById("ABCinput");
+        let numberinput: HTMLInputElement = <HTMLInputElement>document.getElementById("numberinput");
+
+        if (specialinput.value == undefined && abcinput.value == undefined) {
+            cardNamevalue1 = "0";
+            cardNamevalue2 = "0";
+            cardNamevalue3 = numberinput.value;
+
+        }
+        else if (numberinput.value == undefined && abcinput.value == undefined) {
+            cardNamevalue1 = specialinput.value;
+            cardNamevalue2 = "0";
+            cardNamevalue3 = "0";
+        }
+        else if (numberinput.value == undefined && specialinput.value == undefined) {
+            cardNamevalue1 = "0";
+            cardNamevalue2 = abcinput.value;
+            cardNamevalue3 = "0";
+        }
+
+
+
+
 
         let specialCardPair: number = Number.parseInt(cardNamevalue1);
         let abcCardPair: number = Number.parseInt(cardNamevalue2);
         let numberCardPair: number = Number.parseInt(cardNamevalue3);
 
+
         if (abcCardPair == 0 && numberCardPair == 0) {
             cardPair = specialCardPair;
-            createCards = arraySpecialcharacters.name;
+            createGame = arrayCards["special"].content;
 
         }
         else if (specialCardPair == 0 && numberCardPair == 0) {
             cardPair = abcCardPair;
-            createCards = ABC.name;
+            createGame = arrayCards["ABC"].content;
 
         }
         else if (specialCardPair == 0 && abcCardPair == 0) {
             cardPair = numberCardPair;
-            createCards = arrayNumbers.name;
+            createGame = arrayCards["numbers"].content;
         }
-        
-        
-        
+
         numberCards = cardPair * 2;
-        removeCard = createCards.length - cardPair;
+        removeCard = createGame.length - cardPair;
         console.log(numberCards);
 
-        createCards.splice(numberCards, removeCard);
+        createGame.splice(numberCards, removeCard);
 
         for (let i: number = 0; i < numberCards; i++) {
             createCard();
@@ -117,7 +177,7 @@ namespace Aufgabe4 {
         let hideFieldset1: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementsByTagName("fieldset")[0];
         let hideFieldset2: HTMLFieldSetElement = <HTMLFieldSetElement>document.getElementsByTagName("fieldset")[1];
         let showHeader: HTMLElement = <HTMLElement>document.getElementsByTagName("header")[0];
-        
+
         showHeader.setAttribute("class", "open2");
         hideFieldset1.setAttribute("class", "hidden3");
         hideFieldset2.setAttribute("class", "hidden3");
@@ -165,8 +225,8 @@ namespace Aufgabe4 {
 
 
     function createCard(): void {
-        let random: string = createCards[Math.floor(Math.random() * createCards.length)];
-        let position: number = createCards.indexOf(random);
+        let random: string = createGame[Math.floor(Math.random() * createGame.length)];
+        let position: number = createGame.indexOf(random);
 
         let div: HTMLDivElement = document.createElement("div");
 
@@ -174,7 +234,7 @@ namespace Aufgabe4 {
         div.innerText = random;
         div.addEventListener("click", cardClicked);
         document.getElementById("game").appendChild(div);
-        createCards.splice(position, 1);
+        createGame.splice(position, 1);
     }
 
     function cardClicked(event: Event): void {
@@ -229,19 +289,3 @@ namespace Aufgabe4 {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

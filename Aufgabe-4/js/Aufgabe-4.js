@@ -5,8 +5,9 @@ var Aufgabe4;
     let playerNumber;
     let cardPair;
     let numberCards;
-    let createCards;
+    let createGame;
     let removeCard;
+    let amount = 1;
     let cardNamevalue1;
     let cardNamevalue2;
     let cardNamevalue3;
@@ -25,26 +26,58 @@ var Aufgabe4;
     let specialButton = document.getElementById("special");
     let abcButton = document.getElementById("ABC");
     let numberButton = document.getElementById("123");
-    let specialinput = document.getElementById("specialinput");
-    let abcinput = document.getElementById("ABCinput");
-    let numberinput = document.getElementById("numberinput");
     specialButton.addEventListener("click", specialInput);
     abcButton.addEventListener("click", abcInput);
     numberButton.addEventListener("click", numberInput);
     function specialInput() {
-        specialinput.setAttribute("class", "open2");
-        abcinput.setAttribute("class", "hidden2");
-        numberinput.setAttribute("class", "hidden2");
+        if (amount == 1) {
+            let input = document.createElement("input");
+            input.type = "number";
+            input.min = "1";
+            input.id = "specialinput";
+            input.max = Aufgabe4.arrayCards["special"].length;
+            document.getElementById("cards").appendChild(input);
+            amount++;
+        }
+        else {
+            removeinput();
+            amount = 1;
+        }
+    }
+    function removeinput() {
+        let input = document.getElementsByTagName("input")[0];
+        input.value = "0";
+        document.getElementById("cards").removeChild(input);
     }
     function abcInput() {
-        abcinput.setAttribute("class", "open2");
-        specialinput.setAttribute("class", "hidden2");
-        numberinput.setAttribute("class", "hidden2");
+        if (amount == 1) {
+            let input = document.createElement("input");
+            input.type = "number";
+            input.min = "1";
+            input.id = "ABCinput";
+            input.max = Aufgabe4.arrayCards["ABC"].length;
+            document.getElementById("cards").appendChild(input);
+            amount++;
+        }
+        else {
+            removeinput();
+            amount = 1;
+        }
     }
     function numberInput() {
-        numberinput.setAttribute("class", "open2");
-        abcinput.setAttribute("class", "hidden2");
-        specialinput.setAttribute("class", "hidden2");
+        if (amount == 1) {
+            let input = document.createElement("input");
+            input.type = "number";
+            input.min = "1";
+            input.id = "numberinput";
+            input.max = Aufgabe4.arrayCards["numbers"].length;
+            document.getElementById("cards").appendChild(input);
+            amount++;
+        }
+        else {
+            removeinput();
+            amount = 1;
+        }
     }
     let startGame = document.getElementById("startgame");
     startGame.addEventListener("click", gameStart);
@@ -62,28 +95,43 @@ var Aufgabe4;
         player3.innerText = inputvalue3;
         player4.innerText = inputvalue4;
         console.log(inputvalue3);
-        cardNamevalue1 = specialinput.value;
-        cardNamevalue2 = abcinput.value;
-        cardNamevalue3 = numberinput.value;
+        let specialinput = document.getElementById("specialinput");
+        let abcinput = document.getElementById("ABCinput");
+        let numberinput = document.getElementById("numberinput");
+        if (specialinput.value == undefined && abcinput.value == undefined) {
+            cardNamevalue1 = "0";
+            cardNamevalue2 = "0";
+            cardNamevalue3 = numberinput.value;
+        }
+        else if (numberinput.value == undefined && abcinput.value == undefined) {
+            cardNamevalue1 = specialinput.value;
+            cardNamevalue2 = "0";
+            cardNamevalue3 = "0";
+        }
+        else if (numberinput.value == undefined && specialinput.value == undefined) {
+            cardNamevalue1 = "0";
+            cardNamevalue2 = abcinput.value;
+            cardNamevalue3 = "0";
+        }
         let specialCardPair = Number.parseInt(cardNamevalue1);
         let abcCardPair = Number.parseInt(cardNamevalue2);
         let numberCardPair = Number.parseInt(cardNamevalue3);
         if (abcCardPair == 0 && numberCardPair == 0) {
             cardPair = specialCardPair;
-            createCards = Aufgabe4.arraySpecialcharacters.name;
+            createGame = Aufgabe4.arrayCards["special"].content;
         }
         else if (specialCardPair == 0 && numberCardPair == 0) {
             cardPair = abcCardPair;
-            createCards = Aufgabe4.ABC.name;
+            createGame = Aufgabe4.arrayCards["ABC"].content;
         }
         else if (specialCardPair == 0 && abcCardPair == 0) {
             cardPair = numberCardPair;
-            createCards = Aufgabe4.arrayNumbers.name;
+            createGame = Aufgabe4.arrayCards["numbers"].content;
         }
         numberCards = cardPair * 2;
-        removeCard = createCards.length - cardPair;
+        removeCard = createGame.length - cardPair;
         console.log(numberCards);
-        createCards.splice(numberCards, removeCard);
+        createGame.splice(numberCards, removeCard);
         for (let i = 0; i < numberCards; i++) {
             createCard();
         }
@@ -128,14 +176,14 @@ var Aufgabe4;
         player4input.setAttribute("class", "open2");
     }
     function createCard() {
-        let random = createCards[Math.floor(Math.random() * createCards.length)];
-        let position = createCards.indexOf(random);
+        let random = createGame[Math.floor(Math.random() * createGame.length)];
+        let position = createGame.indexOf(random);
         let div = document.createElement("div");
         div.setAttribute("class", "hidden");
         div.innerText = random;
         div.addEventListener("click", cardClicked);
         document.getElementById("game").appendChild(div);
-        createCards.splice(position, 1);
+        createGame.splice(position, 1);
     }
     function cardClicked(event) {
         let clicked = event.target;
@@ -179,4 +227,4 @@ var Aufgabe4;
         }
     }
 })(Aufgabe4 || (Aufgabe4 = {}));
-//# sourceMappingURL=aufgabe4.js.map
+//# sourceMappingURL=Aufgabe-4.js.map
