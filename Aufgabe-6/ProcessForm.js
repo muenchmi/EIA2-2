@@ -1,7 +1,7 @@
 var Aufgabe06_Interfaces;
 (function (Aufgabe06_Interfaces) {
     window.addEventListener("load", init);
-    let address = "https://eia2-nodetest-muenchmi.com/";
+    let address = "https://eia2-nodetest-muenchmi.herokuapp.com/";
     let inputs = document.getElementsByTagName("input");
     function init(_event) {
         console.log("Init");

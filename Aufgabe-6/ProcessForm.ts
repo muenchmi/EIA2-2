@@ -1,7 +1,7 @@
 namespace Aufgabe06_Interfaces {
     window.addEventListener("load", init);
 
-    let address: string = "https://eia2-nodetest-muenchmi.com/";
+    let address: string = "https://eia2-nodetest-muenchmi.herokuapp.com/";
 
     let inputs: NodeListOf<HTMLInputElement> = document.getElementsByTagName("input");
 
@@ -28,7 +28,6 @@ namespace Aufgabe06_Interfaces {
             gender: genderButton.checked,
             studiengang: document.getElementsByTagName("select").item(0).value
         };
-
         let convert: string = JSON.stringify(studi);
         console.log(convert);
 
@@ -51,35 +50,35 @@ namespace Aufgabe06_Interfaces {
         xhr.open("GET", address + "?command=refresh", true);
         xhr.addEventListener("readystatechange", handleStateChangeRefresh);
         xhr.send();
-    }
-
+    }    
+    
     function handleStateChangeRefresh(_event: ProgressEvent): void {
         let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[0];
         output.value = "";
         var xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
             output.value += xhr.response;
-        }
+        }           
     }
-
+    
     function search(_event: Event): void {
         let mtrkl: string = inputs[6].value;
-
+        
         let xhr: XMLHttpRequest = new XMLHttpRequest();
         xhr.open("GET", address + "?command=search&searchFor=" + mtrkl, true);
         xhr.addEventListener("readystatechange", handleStateChangeSearch);
-        xhr.send();
+        xhr.send();    
     }
-
+    
     function handleStateChangeSearch(_event: ProgressEvent): void {
         let output: HTMLTextAreaElement = document.getElementsByTagName("textarea")[1];
         output.value = "";
         var xhr: XMLHttpRequest = (<XMLHttpRequest>_event.target);
         if (xhr.readyState == XMLHttpRequest.DONE) {
             output.value += xhr.response;
-        }
+        }           
     }
-
-
+    
+            
 
 }
