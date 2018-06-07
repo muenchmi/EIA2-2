@@ -28,6 +28,7 @@ namespace Aufgabe06_Interfaces {
             gender: genderButton.checked,
             studiengang: document.getElementsByTagName("select").item(0).value
         };
+        
         let convert: string = JSON.stringify(studi);
         console.log(convert);
 
