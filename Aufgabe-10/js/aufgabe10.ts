@@ -7,8 +7,8 @@ namespace Aufgabe10 {
 
     let imgData: ImageData;
 
-    let bigFish: BigFish[] = [];
-    let smallFish: SmallFish[] = [];
+    let fishOne: FishOne[] = [];
+    let fishTwo: FishTwo[] = [];
     let bigBubbles: BigBubble[] = [];
     let smallBubbles: SmallBubble[] = [];
 
@@ -43,23 +43,23 @@ namespace Aufgabe10 {
             smallBubbles.push(sb);
         }
         for (let i: number = 0; i < fishnumber; i++) {
-            let bf: BigFish = new BigFish();
-            bf.x = (Math.random() * (900 - 50)) + 50;
-            bf.y = (Math.random() * (600 - 50)) + 50;
+            let fishone: FishOne = new FishOne();
+            fishone.x = (Math.random() * (900 - 50)) + 50;
+            fishone.y = (Math.random() * (600 - 50)) + 50;
 
 
 
-            bigFish.push(bf);
+            fishOne.push(fishone);
         }
 
         for (let i: number = 0; i < fishnumber; i++) {
-            let sf: SmallFish = new SmallFish();
+            let fishtwo: FishTwo = new FishTwo();
 
-            sf.x = Math.floor((Math.random() * (canvas.width - 400)) + 400);
-            sf.y = Math.floor((Math.random() * (canvas.height - 250)) + 50);
+            fishtwo.x = Math.floor((Math.random() * (canvas.width - 400)) + 400);
+            fishtwo.y = Math.floor((Math.random() * (canvas.height - 250)) + 50);
 
 
-            smallFish.push(sf);
+            fishTwo.push(fishtwo);
         }
 
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // Speichern der Landschaft
@@ -72,16 +72,13 @@ namespace Aufgabe10 {
             crc2.putImageData(imgData, 0, 0);
 
             moveBigBubbles();
-            drawBigBubbles();
-
             moveSmallBubbles();
-            drawSmallBubbles();
-
             moveBigFish();
             moveSmallFish();
-
-            drawBigFish();
-            drawSmallFish();
+            drawSmallBubbles();
+            drawBigBubbles();
+            drawFishOne();
+            drawFishTwo();
 
             window.setTimeout(animate, 20);
         }
@@ -109,25 +106,25 @@ namespace Aufgabe10 {
         }
 
         function moveBigFish(): void {
-            for (let i: number = 0; i < bigFish.length; i++) {
-                bigFish[i].move();
+            for (let i: number = 0; i < fishOne.length; i++) {
+                fishOne[i].move();
             }
         }
 
-        function drawBigFish(): void {
-            for (let i: number = 0; i < bigFish.length; i++)
-                bigFish[i].drawBigFish();
+        function drawFishOne(): void {
+            for (let i: number = 0; i < fishOne.length; i++)
+                fishOne[i].drawFishOne();
         }
 
         function moveSmallFish(): void {
-            for (let i: number = 0; i < smallFish.length; i++) {
-                smallFish[i].move();
+            for (let i: number = 0; i < fishTwo.length; i++) {
+                fishTwo[i].move();
             }
         }
 
-        function drawSmallFish(): void {
-            for (let i: number = 0; i < smallFish.length; i++)
-                smallFish[i].drawSmallFish();
+        function drawFishTwo(): void {
+            for (let i: number = 0; i < fishTwo.length; i++)
+                fishTwo[i].drawFishTwo();
         }
 
 

@@ -1,6 +1,6 @@
 var Aufgabe10;
 (function (Aufgabe10) {
-    class SmallFish {
+    class FishTwo {
         move() {
             this.x += -4;
             this.y += 0;
@@ -15,7 +15,7 @@ var Aufgabe10;
                 this.y = 0;
             }
         }
-        drawSmallFish() {
+        drawFishTwo() {
             Aufgabe10.crc2.beginPath();
             Aufgabe10.crc2.moveTo(this.x, this.y);
             Aufgabe10.crc2.quadraticCurveTo(this.x + 50, this.y - 50, this.x + 100, this.y - 25);
@@ -33,15 +33,15 @@ var Aufgabe10;
             Aufgabe10.crc2.fill();
         }
     }
-    Aufgabe10.SmallFish = SmallFish;
-    class BigFish {
+    Aufgabe10.FishTwo = FishTwo;
+    class FishOne {
         move() {
             this.x += 5;
             if (this.x > Aufgabe10.canvas.width) {
                 this.x = -10;
             }
         }
-        drawBigFish() {
+        drawFishOne() {
             Aufgabe10.crc2.beginPath();
             Aufgabe10.crc2.moveTo(this.x, this.y);
             Aufgabe10.crc2.lineTo(this.x, this.y + 100);
@@ -62,6 +62,6 @@ var Aufgabe10;
             Aufgabe10.crc2.fill();
         }
     }
-    Aufgabe10.BigFish = BigFish;
+    Aufgabe10.FishOne = FishOne;
 })(Aufgabe10 || (Aufgabe10 = {}));
 //# sourceMappingURL=fish.js.map

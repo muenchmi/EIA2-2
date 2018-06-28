@@ -1,6 +1,6 @@
 namespace Aufgabe10 {
 
-    export class SmallFish {
+    export class FishTwo {
 
         x: number;
         y: number;
@@ -21,7 +21,7 @@ namespace Aufgabe10 {
 
         }
 
-        drawSmallFish(): void {
+        drawFishTwo(): void {
             crc2.beginPath();
             crc2.moveTo(this.x, this.y);
             crc2.quadraticCurveTo(this.x + 50, this.y - 50, this.x + 100, this.y - 25);
@@ -40,7 +40,7 @@ namespace Aufgabe10 {
 
         }
     }
-    export class BigFish {
+    export class FishOne {
         x: number;
         y: number;
 
@@ -55,7 +55,7 @@ namespace Aufgabe10 {
 
         }
 
-        drawBigFish(): void {
+        drawFishOne(): void {
             crc2.beginPath();
             crc2.moveTo(this.x, this.y);
             crc2.lineTo(this.x, this.y + 100);
