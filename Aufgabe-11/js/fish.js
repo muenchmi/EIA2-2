@@ -1,6 +1,11 @@
 var Aufgabe11;
 (function (Aufgabe11) {
-    class FishTwo {
+    class FishTwo extends Aufgabe11.MovingObjects {
+        constructor(_x, _y) {
+            super(_x, _y);
+            this.draw();
+            this.move();
+        }
         move() {
             this.x += -4;
             this.y += 0;
@@ -15,7 +20,7 @@ var Aufgabe11;
                 this.y = 0;
             }
         }
-        drawFishTwo() {
+        draw() {
             Aufgabe11.crc2.beginPath();
             Aufgabe11.crc2.moveTo(this.x, this.y);
             Aufgabe11.crc2.quadraticCurveTo(this.x + 50, this.y - 50, this.x + 100, this.y - 25);
@@ -34,14 +39,18 @@ var Aufgabe11;
         }
     }
     Aufgabe11.FishTwo = FishTwo;
-    class FishOne {
+    class FishOne extends Aufgabe11.MovingObjects {
+        constructor(_x, _y) {
+            super(_x, _y);
+            this.draw();
+        }
         move() {
             this.x += 5;
             if (this.x > Aufgabe11.canvas.width) {
                 this.x = -10;
             }
         }
-        drawFishOne() {
+        draw() {
             Aufgabe11.crc2.beginPath();
             Aufgabe11.crc2.moveTo(this.x, this.y);
             Aufgabe11.crc2.lineTo(this.x, this.y + 100);

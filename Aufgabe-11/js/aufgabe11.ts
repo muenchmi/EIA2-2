@@ -7,16 +7,20 @@ namespace Aufgabe11 {
 
     let imgData: ImageData;
 
-    let fishOne: FishOne[] = [];
-    let fishTwo: FishTwo[] = [];
-    let bigBubbles: BigBubble[] = [];
-    let smallBubbles: SmallBubble[] = [];
+    let movingObjects: MovingObjects[] = [];
+    //    let fishOne: FishOne[] = [];
+    //    let fishTwo: FishTwo[] = [];
+    //    let bigBubbles: BigBubble[] = [];
+    //    let smallBubbles: SmallBubble[] = [];
 
     function init(_event: Event): void {
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.width = 1500;
         canvas.height = 1100;
         crc2 = canvas.getContext("2d");
+        let x: number;
+        let y: number;
+
 
         drawWater(canvas.width, canvas.height);
         drawSeaweed(canvas.width, canvas.height);
@@ -27,43 +31,41 @@ namespace Aufgabe11 {
         imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
 
         for (let i: number = 0; i < bubblenumber; i++) {
-            let bb: BigBubble = new BigBubble();
-            bb.x = Math.floor((Math.random() * (canvas.width / 2 - 350)) + 100);
-            bb.y = Math.floor((Math.random() * (canvas.height - 500)) + 50);
 
+            x = Math.floor((Math.random() * (canvas.width / 2 - 350)) + 100);
+            y = Math.floor((Math.random() * (canvas.height - 500)) + 50);
+            let bb: BigBubble = new BigBubble(x, y);
 
-            bigBubbles.push(bb);
+            movingObjects.push(bb);
         }
 
         for (let i: number = 0; i < bubblenumber; i++) {
-            let sb: SmallBubble = new SmallBubble();
-            sb.x = Math.floor((Math.random() * (canvas.width / 2 - 350)) + 100);
-            sb.y = Math.floor((Math.random() * (canvas.height - 500)) + 50);
+            x = Math.floor((Math.random() * (canvas.width / 2 - 350)) + 100);
+            y = Math.floor((Math.random() * (canvas.height - 500)) + 50);
 
-            smallBubbles.push(sb);
+            let sb: SmallBubble = new SmallBubble(x, y);
+
+            movingObjects.push(sb);
         }
         for (let i: number = 0; i < fishnumber; i++) {
-            let fishone: FishOne = new FishOne();
-            fishone.x = (Math.random() * (900 - 50)) + 50;
-            fishone.y = (Math.random() * (600 - 50)) + 50;
+            x = (Math.random() * (900 - 50)) + 50;
+            y = (Math.random() * (600 - 50)) + 50;
+            let fishone: FishOne = new FishOne(x, y);
 
 
-
-            fishOne.push(fishone);
+            movingObjects.push(fishone);
         }
 
         for (let i: number = 0; i < fishnumber; i++) {
-            let fishtwo: FishTwo = new FishTwo();
 
-            fishtwo.x = Math.floor((Math.random() * (canvas.width - 400)) + 400);
-            fishtwo.y = Math.floor((Math.random() * (canvas.height - 250)) + 50);
+            x = Math.floor((Math.random() * (canvas.width - 400)) + 400);
+            y = Math.floor((Math.random() * (canvas.height - 250)) + 50);
+            let fishtwo: FishTwo = new FishTwo(x, y);
 
-
-            fishTwo.push(fishtwo);
+            movingObjects.push(fishtwo);
         }
-
-        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height); // Speichern der Landschaft
-
+        
+        canvas.addEventListener("click", foodEvent);
         animate();
 
         function animate(): void {
@@ -71,63 +73,34 @@ namespace Aufgabe11 {
 
             crc2.putImageData(imgData, 0, 0);
 
-            moveBigBubbles();
-            moveSmallBubbles();
-            moveBigFish();
-            moveSmallFish();
-            drawSmallBubbles();
-            drawBigBubbles();
-            drawFishOne();
-            drawFishTwo();
+
+            moveObjects();
+            drawObjects();
 
             window.setTimeout(animate, 20);
         }
 
-        function moveBigBubbles(): void {
-            for (let i: number = 0; i < bigBubbles.length; i++) {
-                bigBubbles[i].move();
+        function drawObjects(): void {
+            for (let i: number = 0; i < movingObjects.length; i++) {
+
+                movingObjects[i].draw();
             }
         }
 
-        function drawBigBubbles(): void {
-            for (let i: number = 0; i < bigBubbles.length; i++)
-                bigBubbles[i].drawBigBubble();
-        }
-
-        function moveSmallBubbles(): void {
-            for (let i: number = 0; i < smallBubbles.length; i++) {
-                smallBubbles[i].move();
+        function moveObjects(): void {
+            for (let i: number = 0; i < movingObjects.length; i++) {
+                movingObjects[i].move();
             }
         }
+        
+        function foodEvent(_event: MouseEvent): void {
+        let foodx: number = _event.pageX;
+        let foody: number = _event.pageY;
 
-        function drawSmallBubbles(): void {
-            for (let i: number = 0; i < smallBubbles.length; i++)
-                smallBubbles[i].drawSmallBubble();
-        }
-
-        function moveBigFish(): void {
-            for (let i: number = 0; i < fishOne.length; i++) {
-                fishOne[i].move();
-            }
-        }
-
-        function drawFishOne(): void {
-            for (let i: number = 0; i < fishOne.length; i++)
-                fishOne[i].drawFishOne();
-        }
-
-        function moveSmallFish(): void {
-            for (let i: number = 0; i < fishTwo.length; i++) {
-                fishTwo[i].move();
-            }
-        }
-
-        function drawFishTwo(): void {
-            for (let i: number = 0; i < fishTwo.length; i++)
-                fishTwo[i].drawFishTwo();
-        }
-
-
+        let foodcor: Food = new Food(foodx, foody);
+        
+        movingObjects.push(foodcor);
+    }
 
 
     }

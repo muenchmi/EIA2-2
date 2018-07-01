@@ -1,13 +1,18 @@
 var Aufgabe11;
 (function (Aufgabe11) {
-    class BigBubble {
+    class BigBubble extends Aufgabe11.MovingObjects {
+        constructor(_x, _y) {
+            super(_x, _y);
+            this.draw();
+            this.move();
+        }
         move() {
             this.y -= 2;
             if (this.y < 0) {
                 this.y = 800;
             }
         }
-        drawBigBubble() {
+        draw() {
             Aufgabe11.crc2.beginPath();
             Aufgabe11.crc2.arc(this.x, this.y, 40, 0, 2 * Math.PI);
             Aufgabe11.crc2.strokeStyle = "white";
@@ -19,14 +24,19 @@ var Aufgabe11;
         }
     }
     Aufgabe11.BigBubble = BigBubble;
-    class SmallBubble {
+    class SmallBubble extends Aufgabe11.MovingObjects {
+        constructor(_x, _y) {
+            super(_x, _y);
+            this.draw();
+            this.move();
+        }
         move() {
             this.y -= 2;
             if (this.y < 0) {
                 this.y = 800;
             }
         }
-        drawSmallBubble() {
+        draw() {
             Aufgabe11.crc2.beginPath();
             Aufgabe11.crc2.arc(this.x, this.y, 20, 0, 2 * Math.PI);
             Aufgabe11.crc2.strokeStyle = "white";

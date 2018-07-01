@@ -1,9 +1,12 @@
 namespace Aufgabe11 {
 
-    export class BigBubble {
-
-        x: number;
-        y: number;
+    export class BigBubble extends MovingObjects  {
+        
+        constructor(_x: number, _y: number) {
+            super(_x, _y);
+            this.draw();
+            this.move();
+        }
 
         move(): void {
             this.y -= 2;
@@ -14,7 +17,7 @@ namespace Aufgabe11 {
 
         }
 
-        drawBigBubble(): void {
+        draw(): void {
             crc2.beginPath();
             crc2.arc(this.x, this.y, 40, 0, 2 * Math.PI);
             crc2.strokeStyle = "white";
@@ -26,11 +29,14 @@ namespace Aufgabe11 {
         }
     }
     
-    export class SmallBubble {
-
-        x: number;
-        y: number;
-
+    export class SmallBubble extends MovingObjects  {
+        
+        constructor(_x: number, _y: number) {
+            super(_x, _y);
+            this.draw();
+            this.move();
+        }
+        
         move(): void {
             this.y -= 2;
 
@@ -40,7 +46,7 @@ namespace Aufgabe11 {
 
         }
 
-        drawSmallBubble(): void {
+        draw(): void {
             crc2.beginPath();
             crc2.arc(this.x, this.y, 20, 0, 2 * Math.PI);
             crc2.strokeStyle = "white";

@@ -1,27 +1,30 @@
 namespace Aufgabe11 {
 
-    export class FishTwo {
+    export class FishTwo extends MovingObjects {
 
-        x: number;
-        y: number;
+        constructor(_x: number, _y: number) {
+            super(_x, _y);
+            this.draw();
+            this.move();
+        }
 
-      move(): void {
-            this.x +=  - 4;
-            this.y +=  0;
-                // Wieder Erscheinen beim Verlassen des Canvas
-            if(this.x<0){
+        move(): void {
+            this.x += - 4;
+            this.y += 0;
+            // Wieder Erscheinen beim Verlassen des Canvas
+            if (this.x < 0) {
                 this.x = canvas.width;
             }
-            if(this.y<0){
+            if (this.y < 0) {
                 this.y = canvas.height;
             }
-            if(this.y> canvas.height){
+            if (this.y > canvas.height) {
                 this.y = 0;
             }
 
         }
 
-        drawFishTwo(): void {
+        draw(): void {
             crc2.beginPath();
             crc2.moveTo(this.x, this.y);
             crc2.quadraticCurveTo(this.x + 50, this.y - 50, this.x + 100, this.y - 25);
@@ -40,12 +43,12 @@ namespace Aufgabe11 {
 
         }
     }
-    export class FishOne {
-        x: number;
-        y: number;
+    export class FishOne extends MovingObjects {
 
-
-
+        constructor(_x: number, _y: number) {
+            super(_x, _y);
+            this.draw();
+        }
         move(): void {
             this.x += 5;
             if (this.x > canvas.width) {
@@ -55,7 +58,7 @@ namespace Aufgabe11 {
 
         }
 
-        drawFishOne(): void {
+        draw(): void {
             crc2.beginPath();
             crc2.moveTo(this.x, this.y);
             crc2.lineTo(this.x, this.y + 100);
