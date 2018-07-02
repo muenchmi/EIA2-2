@@ -10,6 +10,9 @@ var Aufgabe11;
             if (this.y == Aufgabe11.canvas.height) {
                 this.y = Aufgabe11.canvas.height;
             }
+            if (this.y > Aufgabe11.canvas.height) {
+                this.y = Aufgabe11.canvas.height;
+            }
             else {
                 this.y += 4;
             }

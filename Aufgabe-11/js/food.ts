@@ -8,12 +8,17 @@ namespace Aufgabe11 {
             this.move();
 
         }
-        
+
 
         move(): void {
             if (this.y == canvas.height) {
                 this.y = canvas.height;
-            } else {
+            }
+            if (this.y > canvas.height) {
+                this.y = canvas.height;
+            }
+
+            else {
                 this.y += 4;
             }
         }
