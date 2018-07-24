@@ -1,8 +1,4 @@
-namespace Abschlussaufgabe { 
-
-
-
-
+namespace Abschlussaufgabe {
 
 
 }

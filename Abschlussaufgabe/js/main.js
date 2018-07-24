@@ -1,40 +1,44 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     window.addEventListener("load", init);
-    let bubblenumber = 8;
-    let fishnumber = 7;
-    var image = new Image();
-    image.src = 'images/yosemite.jpg';
+    let foodnumber = 10;
+    Abschlussaufgabe.fallingObjects = [];
     function init(_event) {
         Abschlussaufgabe.canvas = document.getElementsByTagName("canvas")[0];
         Abschlussaufgabe.canvas.width = 1093;
         Abschlussaufgabe.canvas.height = 756;
         Abschlussaufgabe.crc2 = Abschlussaufgabe.canvas.getContext("2d");
-        for (let i = 0; i < bubblenumber; i++) {
-            let randomBubbles = Math.floor((Math.random() * 2) + 0);
-            let x = Math.floor((Math.random() * (Abschlussaufgabe.canvas.width / 2 - 350)) + 100);
-            let y = Math.floor((Math.random() * (Abschlussaufgabe.canvas.height - 500)) + 50);
-            switch (randomBubbles) {
-                case 0:
-                    //                    drawsmallBubble(x, y);
-                    break;
-                case 1:
-                    //                    drawBubble(x, y);
-                    break;
+        let x;
+        let y;
+        let imgData;
+        let image = new Image();
+        image.src = "images/Wald.png";
+        image.onload = loadBackground;
+        function loadBackground() {
+            Abschlussaufgabe.crc2.drawImage(image, 0, 0);
+        }
+        imgData = Abschlussaufgabe.crc2.getImageData(0, 0, Abschlussaufgabe.canvas.width, Abschlussaufgabe.canvas.height);
+        for (let i = 0; i < foodnumber; i++) {
+            x = Math.floor((Math.random() * (Abschlussaufgabe.canvas.width / 2 - 350)) + 100);
+            y = Math.floor((Math.random() * (Abschlussaufgabe.canvas.height - 500)) + 50);
+            let sf = new Abschlussaufgabe.Food(x, y);
+            Abschlussaufgabe.fallingObjects.push(sf);
+        }
+        animate();
+        function animate() {
+            Abschlussaufgabe.crc2.putImageData(imgData, 0, 0);
+            moveObjects();
+            drawObjects();
+            window.setTimeout(animate, 20);
+        }
+        function drawObjects() {
+            for (let i = 0; i < Abschlussaufgabe.fallingObjects.length; i++) {
+                Abschlussaufgabe.fallingObjects[i].draw();
             }
         }
-        //RANDOM FISH
-        for (let i = 0; i < fishnumber; i++) {
-            let randomFishs = Math.floor((Math.random() * 2) + 0);
-            let x = Math.floor((Math.random() * (Abschlussaufgabe.canvas.width - 400)) + 400);
-            let y = Math.floor((Math.random() * (Abschlussaufgabe.canvas.height - 250)) + 50);
-            switch (randomFishs) {
-                case 0:
-                    //                    drawFishOne(x, y);
-                    break;
-                case 1:
-                    //                    drawFishTwo(x, y);
-                    break;
+        function moveObjects() {
+            for (let i = 0; i < Abschlussaufgabe.fallingObjects.length; i++) {
+                Abschlussaufgabe.fallingObjects[i].move();
             }
         }
     }

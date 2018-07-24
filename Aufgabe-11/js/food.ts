@@ -14,7 +14,7 @@ namespace Aufgabe11 {
             if (this.y == canvas.height) {
                 this.y = canvas.height;
             }
-            if (this.y > canvas.height) {
+            if  (this.y > canvas.height) {
                 this.y = canvas.height;
             }
 

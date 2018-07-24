@@ -2,46 +2,67 @@ namespace Abschlussaufgabe {
     window.addEventListener("load", init);
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
-    let bubblenumber: number = 8;
-    let fishnumber: number = 7;
-    var image = new Image();
-    image.src = 'images/yosemite.jpg';
+    let foodnumber: number = 10;
+
+    export let fallingObjects: FallingObject[] = [];
 
     function init(_event: Event): void {
         canvas = document.getElementsByTagName("canvas")[0];
         canvas.width = 1093;
         canvas.height = 756;
         crc2 = canvas.getContext("2d");
+        let x: number;
+        let y: number;
+
+        let imgData: ImageData;
+
+        let image: HTMLImageElement = new Image();
+        image.src = "images/Wald.png";
+
+        image.onload = loadBackground;
+
+        function loadBackground(): void {
+            crc2.drawImage(image, 0, 0);
+        }
+
+        imgData = crc2.getImageData(0, 0, canvas.width, canvas.height);
+
+        for (let i: number = 0; i < foodnumber; i++) {
+            x = Math.floor((Math.random() * (canvas.width / 2 - 350)) + 100);
+            y = Math.floor((Math.random() * (canvas.height - 500)) + 50);
+
+            let sf: Food = new Food (x, y);
+
+            fallingObjects.push(sf);
+        }
+        animate();
+        
+        function animate(): void {
 
 
-        for (let i: number = 0; i < bubblenumber; i++) {
-            let randomBubbles: number = Math.floor((Math.random() * 2) + 0);
-            let x: number = Math.floor((Math.random() * (canvas.width / 2 - 350)) + 100);
-            let y: number = Math.floor((Math.random() * (canvas.height - 500)) + 50);
-            switch (randomBubbles) {
-                case 0:
-                    //                    drawsmallBubble(x, y);
-                    break;
-                case 1:
-                    //                    drawBubble(x, y);
-                    break;
+            crc2.putImageData(imgData, 0, 0);
+
+
+            moveObjects();
+            drawObjects();
+
+            window.setTimeout(animate, 20);
+        }
+
+        function drawObjects(): void {
+            for (let i: number = 0; i < fallingObjects.length; i++) {
+
+                fallingObjects[i].draw();
             }
         }
 
-        //RANDOM FISH
-        for (let i: number = 0; i < fishnumber; i++) {
-            let randomFishs: number = Math.floor((Math.random() * 2) + 0);
-            let x: number = Math.floor((Math.random() * (canvas.width - 400)) + 400);
-            let y: number = Math.floor((Math.random() * (canvas.height - 250)) + 50);
-            switch (randomFishs) {
-                case 0:
-                    //                    drawFishOne(x, y);
-                    break;
-                case 1:
-                    //                    drawFishTwo(x, y);
-                    break;
+        function moveObjects(): void {
+            for (let i: number = 0; i < fallingObjects.length; i++) {
+                fallingObjects[i].move();
             }
         }
+
+
 
 
 
