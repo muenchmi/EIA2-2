@@ -1,13 +1,19 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class FallingObject {
-        constructor(_x, _y) {
+        constructor(_x, _y, _type) {
+            this.score = 0;
             this.x = _x;
             this.y = _y;
+            this.type = _type;
         }
         draw() { }
+        ;
         move() { }
+        ;
+        update() { }
+        ;
     }
     Abschlussaufgabe.FallingObject = FallingObject;
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
-//# sourceMappingURL=fallingObject.js.map
+//# sourceMappingURL=FallingObject.js.map
