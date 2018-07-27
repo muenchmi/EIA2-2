@@ -6,6 +6,9 @@ var Abschlussaufgabe;
             this.type = "pinecone";
             this.draw();
             this.move();
+            this.image = new Image();
+            this.image.src = "images/pinecone.png";
+            console.log(this.x, this.y, this.image);
         }
         update() {
             this.move();
@@ -22,13 +25,15 @@ var Abschlussaufgabe;
         }
         draw() {
             Abschlussaufgabe.crc2.beginPath();
-            Abschlussaufgabe.crc2.arc(this.x, this.y, 40, 0, 2 * Math.PI);
-            Abschlussaufgabe.crc2.strokeStyle = "black";
-            Abschlussaufgabe.crc2.lineWidth = 4;
-            Abschlussaufgabe.crc2.fillStyle = "rgba(240, 248, 255, 0.3)";
-            Abschlussaufgabe.crc2.fill();
+            Abschlussaufgabe.crc2.drawImage(this.image, this.x, this.y);
             Abschlussaufgabe.crc2.closePath();
-            Abschlussaufgabe.crc2.stroke();
+            //            crc2.arc(this.x, this.y, 40, 0, 2 * Math.PI);
+            //            crc2.strokeStyle = "black";
+            //            crc2.lineWidth = 4;
+            //            crc2.fillStyle = "rgba(240, 248, 255, 0.3)";
+            //            crc2.fill();
+            //            crc2.closePath();
+            //            crc2.stroke();
         }
     }
     Abschlussaufgabe.Pinecone = Pinecone;

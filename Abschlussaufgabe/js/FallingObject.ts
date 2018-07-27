@@ -6,7 +6,7 @@ namespace Abschlussaufgabe {
         y: number;
         type: string;
         score: number= 0;
-        
+        image: HTMLImageElement;
 
         constructor(_x: number, _y: number, _type: string) {
             this.x = _x;
