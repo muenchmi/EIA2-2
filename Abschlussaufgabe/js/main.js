@@ -26,7 +26,7 @@ var Abschlussaufgabe;
         };
         image.src = "images/start.png";
     }
-    /////////////////////////////////////START SCREEN TUTORIAL///////////////////////////////////////////////    
+    /////////////////////////////////////START SCREEN TUTORIAL////////////////////////////////////////////////    
     function startTutorial(_event) {
         let canvas;
         canvas = document.getElementsByTagName("canvas")[0];
