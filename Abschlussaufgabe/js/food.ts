@@ -32,13 +32,13 @@ namespace Abschlussaufgabe {
             crc2.beginPath();
             //crc2.drawImage(this.image, this.x+2, this.y+2);
             //crc2.closePath();
-                        crc2.arc(this.x, this.y, 40, 0, 2 * Math.PI);
-                        crc2.strokeStyle = "black";
-                        crc2.lineWidth = 4;
-                        crc2.fillStyle = "rgba(240, 248, 255, 0.3)";
-                        crc2.fill();
-                        crc2.closePath();
-                        crc2.stroke();
+            crc2.arc(this.x, this.y, 40, 0, 2 * Math.PI);
+            crc2.strokeStyle = "black";
+            crc2.lineWidth = 4;
+            crc2.fillStyle = "rgba(240, 248, 255, 0.3)";
+            crc2.fill();
+            crc2.closePath();
+            crc2.stroke();
         }
 
 
