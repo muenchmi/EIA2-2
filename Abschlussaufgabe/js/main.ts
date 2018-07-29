@@ -52,7 +52,7 @@ namespace Abschlussaufgabe {
 
         image.onload = loadTutorial;                    //zeichnet das Tutorial
 
-        image.src = "images/tutorial.png";
+        image.src = "images/tutorial2.png";
     }
 
     //////////////////////////////////////// START GAME///////////////////////////////////////////////////////

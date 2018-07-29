@@ -37,7 +37,7 @@ var Abschlussaufgabe;
         canvas.addEventListener("touch", init);
         image = new Image();
         image.onload = loadTutorial; //zeichnet das Tutorial
-        image.src = "images/tutorial.png";
+        image.src = "images/tutorial2.png";
     }
     //////////////////////////////////////// START GAME///////////////////////////////////////////////////////
     function init(_event) {
