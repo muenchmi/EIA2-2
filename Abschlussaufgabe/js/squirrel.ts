@@ -16,11 +16,7 @@ namespace Abschlussaufgabe {
             //            this.image.src = "images/squirrel.png";
 
         }
-        update(): void {
 
-            this.move();
-            this.draw();
-        }
 
         move(): void {
 
@@ -80,16 +76,16 @@ namespace Abschlussaufgabe {
                         if (fallingObjects[i].type == "pinecone" || fallingObjects[i].type == "acorn") {
 
                             if (fallingObjects[i].type == "pinecone") {  //je nach Objekt gibt es unterschiedliche Punkte
-                                let test: Pinecone = fallingObjects[i];
-                                let index: number = fallingObjects.indexOf(test);
+                                let pinecone: Pinecone = fallingObjects[i];
+                                let index: number = fallingObjects.indexOf(pinecone);
                                 fallingObjects.splice(index, 1); //entfernt das Objekt nach dem es gefangen wurde
                                 score += 2;
 
 
                             }
                             else {
-                                let test: Acorn = fallingObjects[i];
-                                let index: number = fallingObjects.indexOf(test);
+                                let acorn: Acorn = fallingObjects[i];
+                                let index: number = fallingObjects.indexOf(acorn);
                                 fallingObjects.splice(index, 1);
                                 score += 6;
                                 lives += 1;
@@ -99,16 +95,16 @@ namespace Abschlussaufgabe {
 
                             //                            //Minus Punkte
                             if (fallingObjects[i].type == "branch") {
-                                let test: Branch = fallingObjects[i];
-                                let index: number = fallingObjects.indexOf(test);
+                                let branch: Branch = fallingObjects[i];
+                                let index: number = fallingObjects.indexOf(branch);
                                 fallingObjects.splice(index, 1);
                                 score -= 2;
 
 
                             }
                             else {
-                                let test: Leaf = fallingObjects[i];
-                                let index: number = fallingObjects.indexOf(test);
+                                let leaf: Leaf = fallingObjects[i];
+                                let index: number = fallingObjects.indexOf(leaf);
                                 fallingObjects.splice(index, 1);
                                 score -= 3;
 
@@ -122,16 +118,16 @@ namespace Abschlussaufgabe {
 
                     if (fallingObjects[i].type == "pinecone" || fallingObjects[i].type == "acorn") {
                         if (fallingObjects[i].type == "pinecone") {
-                            let test: Pinecone = fallingObjects[i];
-                            let index: number = fallingObjects.indexOf(test);
+                            let pinecone: Pinecone = fallingObjects[i];
+                            let index: number = fallingObjects.indexOf(pinecone);
 
                             fallingObjects.splice(index, 1);
                             lives -= 1;
 
                         }
                         else {
-                            let test: Acorn = fallingObjects[i];
-                            let index: number = fallingObjects.indexOf(test);
+                            let acorn: Acorn = fallingObjects[i];
+                            let index: number = fallingObjects.indexOf(acorn);
 
                             fallingObjects.splice(index, 1);
                             lives -= 1;
@@ -142,14 +138,14 @@ namespace Abschlussaufgabe {
 
                     else {
                         if (fallingObjects[i].type == "branch") {
-                            let test: Branch = fallingObjects[i];
-                            let index: number = fallingObjects.indexOf(test);
+                            let branch: Branch = fallingObjects[i];
+                            let index: number = fallingObjects.indexOf(branch);
                             fallingObjects.splice(index, 1);
 
                         }
                         else {
-                            let test: Leaf = fallingObjects[i];
-                            let index: number = fallingObjects.indexOf(test);
+                            let leaf: Leaf = fallingObjects[i];
+                            let index: number = fallingObjects.indexOf(leaf);
 
                             fallingObjects.splice(index, 1);
                         };

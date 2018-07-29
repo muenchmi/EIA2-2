@@ -17,7 +17,7 @@ namespace Abschlussaufgabe {
 
         draw() { };
         move() { };
-        update() { };
+       
 
 
     }

@@ -10,10 +10,6 @@ var Abschlussaufgabe;
             //            this.image = new Image();
             //            this.image.src = "images/squirrel.png";
         }
-        update() {
-            this.move();
-            this.draw();
-        }
         move() {
             for (let i = 0; i < Abschlussaufgabe.keys.length; i++) {
                 if (Abschlussaufgabe.keys[i] == 37) {
@@ -60,14 +56,14 @@ var Abschlussaufgabe;
                     if (distanceY < 80 && distanceY > -80) {
                         if (Abschlussaufgabe.fallingObjects[i].type == "pinecone" || Abschlussaufgabe.fallingObjects[i].type == "acorn") {
                             if (Abschlussaufgabe.fallingObjects[i].type == "pinecone") {
-                                let test = Abschlussaufgabe.fallingObjects[i];
-                                let index = Abschlussaufgabe.fallingObjects.indexOf(test);
+                                let pinecone = Abschlussaufgabe.fallingObjects[i];
+                                let index = Abschlussaufgabe.fallingObjects.indexOf(pinecone);
                                 Abschlussaufgabe.fallingObjects.splice(index, 1); //entfernt das Objekt nach dem es gefangen wurde
                                 Abschlussaufgabe.score += 2;
                             }
                             else {
-                                let test = Abschlussaufgabe.fallingObjects[i];
-                                let index = Abschlussaufgabe.fallingObjects.indexOf(test);
+                                let acorn = Abschlussaufgabe.fallingObjects[i];
+                                let index = Abschlussaufgabe.fallingObjects.indexOf(acorn);
                                 Abschlussaufgabe.fallingObjects.splice(index, 1);
                                 Abschlussaufgabe.score += 6;
                                 Abschlussaufgabe.lives += 1;
@@ -76,14 +72,14 @@ var Abschlussaufgabe;
                         else {
                             //                            //Minus Punkte
                             if (Abschlussaufgabe.fallingObjects[i].type == "branch") {
-                                let test = Abschlussaufgabe.fallingObjects[i];
-                                let index = Abschlussaufgabe.fallingObjects.indexOf(test);
+                                let branch = Abschlussaufgabe.fallingObjects[i];
+                                let index = Abschlussaufgabe.fallingObjects.indexOf(branch);
                                 Abschlussaufgabe.fallingObjects.splice(index, 1);
                                 Abschlussaufgabe.score -= 2;
                             }
                             else {
-                                let test = Abschlussaufgabe.fallingObjects[i];
-                                let index = Abschlussaufgabe.fallingObjects.indexOf(test);
+                                let leaf = Abschlussaufgabe.fallingObjects[i];
+                                let index = Abschlussaufgabe.fallingObjects.indexOf(leaf);
                                 Abschlussaufgabe.fallingObjects.splice(index, 1);
                                 Abschlussaufgabe.score -= 3;
                             }
@@ -93,27 +89,27 @@ var Abschlussaufgabe;
                 else if (fallingY >= Abschlussaufgabe.canvas.height) {
                     if (Abschlussaufgabe.fallingObjects[i].type == "pinecone" || Abschlussaufgabe.fallingObjects[i].type == "acorn") {
                         if (Abschlussaufgabe.fallingObjects[i].type == "pinecone") {
-                            let test = Abschlussaufgabe.fallingObjects[i];
-                            let index = Abschlussaufgabe.fallingObjects.indexOf(test);
+                            let pinecone = Abschlussaufgabe.fallingObjects[i];
+                            let index = Abschlussaufgabe.fallingObjects.indexOf(pinecone);
                             Abschlussaufgabe.fallingObjects.splice(index, 1);
                             Abschlussaufgabe.lives -= 1;
                         }
                         else {
-                            let test = Abschlussaufgabe.fallingObjects[i];
-                            let index = Abschlussaufgabe.fallingObjects.indexOf(test);
+                            let acorn = Abschlussaufgabe.fallingObjects[i];
+                            let index = Abschlussaufgabe.fallingObjects.indexOf(acorn);
                             Abschlussaufgabe.fallingObjects.splice(index, 1);
                             Abschlussaufgabe.lives -= 1;
                         }
                     }
                     else {
                         if (Abschlussaufgabe.fallingObjects[i].type == "branch") {
-                            let test = Abschlussaufgabe.fallingObjects[i];
-                            let index = Abschlussaufgabe.fallingObjects.indexOf(test);
+                            let branch = Abschlussaufgabe.fallingObjects[i];
+                            let index = Abschlussaufgabe.fallingObjects.indexOf(branch);
                             Abschlussaufgabe.fallingObjects.splice(index, 1);
                         }
                         else {
-                            let test = Abschlussaufgabe.fallingObjects[i];
-                            let index = Abschlussaufgabe.fallingObjects.indexOf(test);
+                            let leaf = Abschlussaufgabe.fallingObjects[i];
+                            let index = Abschlussaufgabe.fallingObjects.indexOf(leaf);
                             Abschlussaufgabe.fallingObjects.splice(index, 1);
                         }
                         ;

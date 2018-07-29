@@ -12,8 +12,6 @@ var Abschlussaufgabe;
         ;
         move() { }
         ;
-        update() { }
-        ;
     }
     Abschlussaufgabe.FallingObject = FallingObject;
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));

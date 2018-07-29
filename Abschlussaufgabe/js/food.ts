@@ -12,10 +12,7 @@ namespace Abschlussaufgabe {
 //            this.image.src = "images/pinecone.png";
         }
 
-        update(): void {
-            this.move();
-            this.draw();
-        }
+      
 
         // möglichkeit die Geschwindigkeit der einzelnen Gegenstände zu verändern für ein schwierigeres Spiel
         move(): void {

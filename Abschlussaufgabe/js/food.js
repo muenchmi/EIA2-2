@@ -9,10 +9,6 @@ var Abschlussaufgabe;
             //            this.image = new Image();
             //            this.image.src = "images/pinecone.png";
         }
-        update() {
-            this.move();
-            this.draw();
-        }
         // möglichkeit die Geschwindigkeit der einzelnen Gegenstände zu verändern für ein schwierigeres Spiel
         move() {
             //Fall

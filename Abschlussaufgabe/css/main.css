@@ -16,7 +16,7 @@ body {
 	float: left;
 }
 
-@media only screen and (min-width: 1025px) {
+@media only screen and (min-width: 1025px) { /*  1024px iPad Pro breite */
 	.control {
 		display: none;
 	}

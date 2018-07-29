@@ -137,7 +137,7 @@ var Abschlussaufgabe;
             Abschlussaufgabe.keys.push(39);
         }
     }
-    ///////////////////////////////Button Steuerung/////////////////////////////////////////////      
+    ///////////////////////////////Button Steuerung//////////////////////////////////////////////      
     function left() {
         Abschlussaufgabe.keys.push(1);
     }
