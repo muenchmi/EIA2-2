@@ -3,7 +3,7 @@ namespace Abschlussaufgabe {
     window.addEventListener("load", start);
     export let crc2: CanvasRenderingContext2D;
     export let canvas: HTMLCanvasElement;
-    let foodnumber: number = 1;
+    let foodnumber: number = 1;         // Anzahl der Gegenstände die in einer Reihe runterfallen sollen
     export let keys: number[] = [];
     let x: number;
     let y: number;
@@ -25,14 +25,13 @@ namespace Abschlussaufgabe {
         crc2 = canvas.getContext("2d");
         canvas.width = 1093;
         canvas.height = 756;
-        canvas.addEventListener("click", startTutorial);
+        canvas.addEventListener("click", startTutorial);   // durch klick oder touch auf den Canvas kommt man zum Tutorial
         canvas.addEventListener("touch", startTutorial);
 
-        let image = new Image();
+        image = new Image();
 
-        image.onload = function(): void {
-            crc2.drawImage(image, 0, 0);
-        };
+        image.onload = loadStartpic;       // zeichnet das Startbild 
+
         image.src = "images/start.png";
 
     }
@@ -44,16 +43,15 @@ namespace Abschlussaufgabe {
         crc2 = canvas.getContext("2d");
         canvas.width = 1093;
         canvas.height = 756;
-        canvas.removeEventListener("click", startTutorial);
-        canvas.addEventListener("click", init);
+        canvas.removeEventListener("click", startTutorial); //entfernt die alten Events
+        canvas.removeEventListener("touch", startTutorial);
+        canvas.addEventListener("click", init);             //ruft init auf
         canvas.addEventListener("touch", init);
 
+        image = new Image();
 
-        let image = new Image();
+        image.onload = loadTutorial;                    //zeichnet das Tutorial
 
-        image.onload = function(): void {
-            crc2.drawImage(image, 0, 0);
-        };
         image.src = "images/tutorial.png";
     }
 
@@ -64,8 +62,10 @@ namespace Abschlussaufgabe {
         canvas.width = 1093;
         canvas.height = 756;
         crc2 = canvas.getContext("2d");
+        canvas.removeEventListener("click", init);
+        canvas.removeEventListener("touch", init);
         image.src = "images/Wald.png";
-        image.onload = loadBackground;
+        image.onload = loadBackground;              // zeichnet den Hintergrund
 
         createRandomObjects();
         document.addEventListener("keydown", squirrelKeyDownHandler, false);
@@ -76,6 +76,7 @@ namespace Abschlussaufgabe {
     }
 
 
+    ///////////////////////////////////////FUNCTIONS////////////////////////////////////////////////////////////
 
     function createRandomObjects(): void {
         window.setTimeout(createRandomObjects, 2000);
@@ -84,7 +85,7 @@ namespace Abschlussaufgabe {
             x = Math.floor((Math.random() * (canvas.width - 10)) + 10); // Random stelle in der das Essen runterkommt
             y = 0;
 
-            //zufällige Objekte + Wahrschinlichkeit unterscheidet sich
+            //zufällige Objekte + Wahrschinlichkeit unterscheidet sich 
             let n: number = Math.floor(Math.random() * 100);
             switch (true) {
                 case (n < 50):
@@ -106,26 +107,36 @@ namespace Abschlussaufgabe {
                 default:
                     break;
             }
+
+            // beendet das Spiel wenn die Leben bei null landen oder der score kleiner null ist falls nicht wird der Spielstand angezeigt
             if (score < 0 || lives == 0) {
                 if (score < 0) {
                     score = 0;
-                };
+                }
                 gameOver();
                 location.reload();
 
             }
             else {
-                highscore.innerText = " highscore " + score + "\n lives: " + lives;
+                highscore.innerText = " Highscore: " + score + "\n Lives: " + lives;
             }
         }
+    }
+    ///////////////////HINTERGRUNDFUNKTIONEN////////////////////////////////////////
+    function loadStartpic(): void {
+        crc2.drawImage(image, 0, 0);
+    }
 
-
-
+    function loadTutorial(): void {
+        crc2.drawImage(image, 0, 0);
     }
 
     function loadBackground(): void {
         crc2.drawImage(image, 0, 0);
     }
+
+
+    ////////////////////ANIMATION///////////////////////////////////////////////////////////
     function animate(): void {
 
 
@@ -159,12 +170,12 @@ namespace Abschlussaufgabe {
     ////////////////////////////////Pfeiltasten Steuerung////////////////////////////////////////
     function squirrelKeyDownHandler(_event: KeyboardEvent): void {
 
-        if (_event.keyCode == 37) { // left
-            keys.push(37)
+        if (_event.keyCode == 37) { //left  37 = keyvalue
+            keys.push(37);
         }
 
-        if (_event.keyCode == 39) { // right
-            keys.push(39)
+        if (_event.keyCode == 39) { // right 39 = keyvalue
+            keys.push(39);
 
         }
 
@@ -172,23 +183,17 @@ namespace Abschlussaufgabe {
 
     ///////////////////////////////Button Steuerung//////////////////////////////////////////////      
     function left(): void {
-        keys.push(37)
+        keys.push(1);
     }
 
     function right(): void {
-        keys.push(39)
+        keys.push(2);
 
 
 
     }
 
-
-
-
-
-
-
-
+////////////////////////////////////TEXT AUSGABEN//////////////////////////////////////////////////
 
     export function createScoreboard(): void {
 
@@ -198,7 +203,7 @@ namespace Abschlussaufgabe {
     }
 
     function gameOver(): void {
-        alert("Game Over \nyour score:" + " " + score);
+        alert("GAME OVER \nyour highscore:" + " " + score);
 
     }
 

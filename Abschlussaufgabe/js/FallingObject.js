@@ -1,6 +1,7 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class FallingObject {
+        //        image: HTMLImageElement = new Image();
         constructor(_x, _y, _type) {
             this.score = 0;
             this.x = _x;

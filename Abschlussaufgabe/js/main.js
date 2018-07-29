@@ -1,7 +1,7 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     window.addEventListener("load", start);
-    let foodnumber = 1;
+    let foodnumber = 1; // Anzahl der Gegenstände die in einer Reihe runterfallen sollen
     Abschlussaufgabe.keys = [];
     let x;
     let y;
@@ -18,12 +18,10 @@ var Abschlussaufgabe;
         Abschlussaufgabe.crc2 = canvas.getContext("2d");
         canvas.width = 1093;
         canvas.height = 756;
-        canvas.addEventListener("click", startTutorial);
+        canvas.addEventListener("click", startTutorial); // durch klick oder touch auf den Canvas kommt man zum Tutorial
         canvas.addEventListener("touch", startTutorial);
-        let image = new Image();
-        image.onload = function () {
-            Abschlussaufgabe.crc2.drawImage(image, 0, 0);
-        };
+        image = new Image();
+        image.onload = loadStartpic; // zeichnet das Startbild 
         image.src = "images/start.png";
     }
     /////////////////////////////////////START SCREEN TUTORIAL/////////////////////////////////////////////////    
@@ -33,13 +31,12 @@ var Abschlussaufgabe;
         Abschlussaufgabe.crc2 = canvas.getContext("2d");
         canvas.width = 1093;
         canvas.height = 756;
-        canvas.removeEventListener("click", startTutorial);
-        canvas.addEventListener("click", init);
+        canvas.removeEventListener("click", startTutorial); //entfernt die alten Events
+        canvas.removeEventListener("touch", startTutorial);
+        canvas.addEventListener("click", init); //ruft init auf
         canvas.addEventListener("touch", init);
-        let image = new Image();
-        image.onload = function () {
-            Abschlussaufgabe.crc2.drawImage(image, 0, 0);
-        };
+        image = new Image();
+        image.onload = loadTutorial; //zeichnet das Tutorial
         image.src = "images/tutorial.png";
     }
     //////////////////////////////////////// START GAME///////////////////////////////////////////////////////
@@ -48,8 +45,10 @@ var Abschlussaufgabe;
         Abschlussaufgabe.canvas.width = 1093;
         Abschlussaufgabe.canvas.height = 756;
         Abschlussaufgabe.crc2 = Abschlussaufgabe.canvas.getContext("2d");
+        Abschlussaufgabe.canvas.removeEventListener("click", init);
+        Abschlussaufgabe.canvas.removeEventListener("touch", init);
         image.src = "images/Wald.png";
-        image.onload = loadBackground;
+        image.onload = loadBackground; // zeichnet den Hintergrund
         createRandomObjects();
         document.addEventListener("keydown", squirrelKeyDownHandler, false);
         document.getElementById("right").addEventListener("click", right, false);
@@ -57,12 +56,13 @@ var Abschlussaufgabe;
         createScoreboard();
         animate();
     }
+    ///////////////////////////////////////FUNCTIONS////////////////////////////////////////////////////////////
     function createRandomObjects() {
         window.setTimeout(createRandomObjects, 2000);
         for (let i = 0; i < foodnumber; i++) {
             x = Math.floor((Math.random() * (Abschlussaufgabe.canvas.width - 10)) + 10); // Random stelle in der das Essen runterkommt
             y = 0;
-            //zufällige Objekte + Wahrschinlichkeit unterscheidet sich
+            //zufällige Objekte + Wahrschinlichkeit unterscheidet sich 
             let n = Math.floor(Math.random() * 100);
             switch (true) {
                 case (n < 50):
@@ -84,22 +84,30 @@ var Abschlussaufgabe;
                 default:
                     break;
             }
+            // beendet das Spiel wenn die Leben bei null landen oder der score kleiner null ist falls nicht wird der Spielstand angezeigt
             if (Abschlussaufgabe.score < 0 || Abschlussaufgabe.lives == 0) {
                 if (Abschlussaufgabe.score < 0) {
                     Abschlussaufgabe.score = 0;
                 }
-                ;
                 gameOver();
                 location.reload();
             }
             else {
-                highscore.innerText = " highscore " + Abschlussaufgabe.score + "\n lives: " + Abschlussaufgabe.lives;
+                highscore.innerText = " Highscore: " + Abschlussaufgabe.score + "\n Lives: " + Abschlussaufgabe.lives;
             }
         }
+    }
+    ///////////////////HINTERGRUNDFUNKTIONEN////////////////////////////////////////
+    function loadStartpic() {
+        Abschlussaufgabe.crc2.drawImage(image, 0, 0);
+    }
+    function loadTutorial() {
+        Abschlussaufgabe.crc2.drawImage(image, 0, 0);
     }
     function loadBackground() {
         Abschlussaufgabe.crc2.drawImage(image, 0, 0);
     }
+    ////////////////////ANIMATION///////////////////////////////////////////////////////////
     function animate() {
         loadBackground();
         x = Abschlussaufgabe.canvas.width / 2;
@@ -131,18 +139,19 @@ var Abschlussaufgabe;
     }
     ///////////////////////////////Button Steuerung//////////////////////////////////////////////      
     function left() {
-        Abschlussaufgabe.keys.push(37);
+        Abschlussaufgabe.keys.push(1);
     }
     function right() {
-        Abschlussaufgabe.keys.push(39);
+        Abschlussaufgabe.keys.push(2);
     }
+    ////////////////////////////////////TEXT AUSGABEN//////////////////////////////////////////////////
     function createScoreboard() {
         highscore.style.fontSize = "40px";
         document.body.appendChild(highscore);
     }
     Abschlussaufgabe.createScoreboard = createScoreboard;
     function gameOver() {
-        alert("Game Over \nyour score:" + " " + Abschlussaufgabe.score);
+        alert("GAME OVER \nyour highscore:" + " " + Abschlussaufgabe.score);
     }
 })(Abschlussaufgabe || (Abschlussaufgabe = {}));
 //# sourceMappingURL=main.js.map

@@ -5,11 +5,11 @@ namespace Abschlussaufgabe {
 
         constructor(_x: number, _y: number) {
             super(_x, _y, "pinecone");
-            this.type = "pinecone";
+            this.type = "pinecone";   // Type zum unterscheiden der Objekte 
             this.draw();
             this.move();
-            this.image = new Image();
-            this.image.src = "images/pinecone.png";
+//            this.image = new Image();
+//            this.image.src = "images/pinecone.png";
         }
 
         update(): void {
@@ -17,6 +17,7 @@ namespace Abschlussaufgabe {
             this.draw();
         }
 
+        // möglichkeit die Geschwindigkeit der einzelnen Gegenstände zu verändern für ein schwierigeres Spiel
         move(): void {
 
             //Fall
@@ -33,7 +34,7 @@ namespace Abschlussaufgabe {
             //crc2.drawImage(this.image, this.x+2, this.y+2);
             //crc2.closePath();
             crc2.arc(this.x, this.y, 40, 0, 2 * Math.PI);
-            crc2.strokeStyle = "black";
+            crc2.strokeStyle = "#bd6340";
             crc2.lineWidth = 4;
             crc2.fillStyle = "rgba(240, 248, 255, 0.3)";
             crc2.fill();
@@ -66,9 +67,9 @@ namespace Abschlussaufgabe {
         draw(): void {
             crc2.beginPath();
             crc2.arc(this.x, this.y, 40, 0, 2 * Math.PI);
-            crc2.strokeStyle = "green";
+            crc2.strokeStyle = "#bd6340";
             crc2.lineWidth = 4;
-            crc2.fillStyle = "rgba(240, 248, 255, 0.3)";
+            crc2.fillStyle = "#bd6340";
             crc2.fill();
             crc2.closePath();
             crc2.stroke();
@@ -96,9 +97,9 @@ namespace Abschlussaufgabe {
         draw(): void {
             crc2.beginPath();
             crc2.arc(this.x, this.y, 40, 0, 2 * Math.PI);
-            crc2.strokeStyle = "red";
+            crc2.strokeStyle = "#afafaf";
             crc2.lineWidth = 4;
-            crc2.fillStyle = "rgba(240, 248, 255, 0.3)";
+            crc2.fillStyle = "#afafaf";
             crc2.fill();
             crc2.closePath();
             crc2.stroke();
@@ -126,7 +127,7 @@ namespace Abschlussaufgabe {
         draw(): void {
             crc2.beginPath();
             crc2.arc(this.x, this.y, 40, 0, 2 * Math.PI);
-            crc2.strokeStyle = "white";
+            crc2.strokeStyle = "#afafaf";
             crc2.lineWidth = 4;
             crc2.fillStyle = "rgba(240, 248, 255, 0.3)";
             crc2.fill();

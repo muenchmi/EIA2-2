@@ -1,11 +1,14 @@
 var Abschlussaufgabe;
 (function (Abschlussaufgabe) {
     class Squirrel {
+        //        image: HTMLImageElement;
         constructor(_x, _y) {
             this.x = _x;
             this.y = _y;
             this.move();
             this.draw();
+            //            this.image = new Image();
+            //            this.image.src = "images/squirrel.png";
         }
         update() {
             this.move();
@@ -56,11 +59,10 @@ var Abschlussaufgabe;
                 if (distanceX < 80 && distanceX > -80) {
                     if (distanceY < 80 && distanceY > -80) {
                         if (Abschlussaufgabe.fallingObjects[i].type == "pinecone" || Abschlussaufgabe.fallingObjects[i].type == "acorn") {
-                            //Plus Punkte
                             if (Abschlussaufgabe.fallingObjects[i].type == "pinecone") {
                                 let test = Abschlussaufgabe.fallingObjects[i];
                                 let index = Abschlussaufgabe.fallingObjects.indexOf(test);
-                                Abschlussaufgabe.fallingObjects.splice(index, 1);
+                                Abschlussaufgabe.fallingObjects.splice(index, 1); //entfernt das Objekt nach dem es gefangen wurde
                                 Abschlussaufgabe.score += 2;
                             }
                             else {
@@ -114,16 +116,19 @@ var Abschlussaufgabe;
                             let index = Abschlussaufgabe.fallingObjects.indexOf(test);
                             Abschlussaufgabe.fallingObjects.splice(index, 1);
                         }
+                        ;
                     }
                 }
             }
         }
         draw() {
             Abschlussaufgabe.crc2.beginPath();
+            //            crc2.drawImage(this.image, 0, 0, this.x, this.y);
+            //            crc2.closePath();
             Abschlussaufgabe.crc2.arc(this.x, this.y, 40, 0, 2 * Math.PI);
-            Abschlussaufgabe.crc2.strokeStyle = "black";
+            Abschlussaufgabe.crc2.strokeStyle = "brown";
             Abschlussaufgabe.crc2.lineWidth = 4;
-            Abschlussaufgabe.crc2.fillStyle = "rgba(240, 248, 255, 0.3)";
+            Abschlussaufgabe.crc2.fillStyle = "brown";
             Abschlussaufgabe.crc2.fill();
             Abschlussaufgabe.crc2.closePath();
             Abschlussaufgabe.crc2.stroke();

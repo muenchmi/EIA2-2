@@ -3,12 +3,17 @@ namespace Abschlussaufgabe {
     export class Squirrel {
         x: number;
         y: number;
+        //        image: HTMLImageElement;
+
 
         constructor(_x: number, _y: number) {
             this.x = _x;
             this.y = _y;
             this.move();
             this.draw();
+
+            //            this.image = new Image();
+            //            this.image.src = "images/squirrel.png";
 
         }
         update(): void {
@@ -19,11 +24,12 @@ namespace Abschlussaufgabe {
 
         move(): void {
 
-            for (let i = 0; i < keys.length; i++) {
+            for (let i: number = 0; i < keys.length; i++) {
 
                 if (keys[i] == 37) { // left
-                    if (this.x < 0)
-                    { this.x = 0 + 25 }
+                    if (this.x < 0) {
+                        this.x = 0 + 25;
+                    }
                     else {
                         this.x -= 25;
                     }
@@ -31,16 +37,17 @@ namespace Abschlussaufgabe {
 
                 if (keys[i] == 39) { // right
                     if (this.x > canvas.width) {
-                        this.x = canvas.width - 25
+                        this.x = canvas.width - 25;
                     }
                     else {
                         this.x += 25;
                     }
                 }
-                
-                if (keys[i] == 1) { // leftbutton
-                    if (this.x < 0)
-                    { this.x = 0 + 75 }
+
+                if (keys[i] == 1) { // leftbutton schnellere Bewegung für die Buttons
+                    if (this.x < 0) {
+                        this.x = 0 + 75;
+                    }
                     else {
                         this.x -= 75;
                     }
@@ -48,34 +55,34 @@ namespace Abschlussaufgabe {
 
                 if (keys[i] == 2) { // rightbutton
                     if (this.x > canvas.width) {
-                        this.x = canvas.width - 75
+                        this.x = canvas.width - 75;
                     }
                     else {
                         this.x += 75;
                     }
                 }
             }
-            
-            
+
+
         }
 
         catch(): void {
 
-            for (let i = 0; i < fallingObjects.length; i++) {
+            for (let i: number = 0; i < fallingObjects.length; i++) {
 
                 let distanceX: number = this.x - fallingObjects[i].x;
                 let distanceY: number = this.y - fallingObjects[i].y;
                 let fallingX: number = fallingObjects[i].x;
                 let fallingY: number = fallingObjects[i].y;
 
-                if (distanceX < 80 && distanceX > -80) { //ÄNDERN
-                    if (distanceY < 80 && distanceY > -80) { // ÄNDERN
+                if (distanceX < 80 && distanceX > -80) { // die Reichweite in der das Objekt als gefangen gilt
+                    if (distanceY < 80 && distanceY > -80) {
                         if (fallingObjects[i].type == "pinecone" || fallingObjects[i].type == "acorn") {
-                            //Plus Punkte
-                            if (fallingObjects[i].type == "pinecone") {
+
+                            if (fallingObjects[i].type == "pinecone") {  //je nach Objekt gibt es unterschiedliche Punkte
                                 let test: Pinecone = fallingObjects[i];
                                 let index: number = fallingObjects.indexOf(test);
-                                fallingObjects.splice(index, 1);
+                                fallingObjects.splice(index, 1); //entfernt das Objekt nach dem es gefangen wurde
                                 score += 2;
 
 
@@ -111,7 +118,7 @@ namespace Abschlussaufgabe {
                     }
 
                 }
-                else if (fallingY >= canvas.height) {
+                else if (fallingY >= canvas.height) { //falls das Objekt nicht gefangen wurde und auf dem Boden landet
 
                     if (fallingObjects[i].type == "pinecone" || fallingObjects[i].type == "acorn") {
                         if (fallingObjects[i].type == "pinecone") {
@@ -132,17 +139,12 @@ namespace Abschlussaufgabe {
                         }
                     }
                     //                        //Minus Punkte
-                    //                        let index: number = fallingObjects.indexOf();
-                    //                        fallingObjects.splice(index, 1);
 
                     else {
                         if (fallingObjects[i].type == "branch") {
                             let test: Branch = fallingObjects[i];
                             let index: number = fallingObjects.indexOf(test);
-
                             fallingObjects.splice(index, 1);
-                            //                            let index: number = fallingObjects.indexOf();
-                            //                            fallingObjects.splice(index, 1);
 
                         }
                         else {
@@ -150,10 +152,7 @@ namespace Abschlussaufgabe {
                             let index: number = fallingObjects.indexOf(test);
 
                             fallingObjects.splice(index, 1);
-                        }
-                        //                        //Keine Veränderung
-                        //                        let index: number = fallingObjects.indexOf();
-                        //                        fallingObjects.splice(index, 1);
+                        };
 
                     }
                 }
@@ -163,16 +162,16 @@ namespace Abschlussaufgabe {
         }
 
         draw(): void {
-
             crc2.beginPath();
+            //            crc2.drawImage(this.image, 0, 0, this.x, this.y);
+            //            crc2.closePath();
             crc2.arc(this.x, this.y, 40, 0, 2 * Math.PI);
-            crc2.strokeStyle = "black";
+            crc2.strokeStyle = "brown";
             crc2.lineWidth = 4;
-            crc2.fillStyle = "rgba(240, 248, 255, 0.3)";
+            crc2.fillStyle = "brown";
             crc2.fill();
             crc2.closePath();
-            crc2.stroke();
-
+            crc2.stroke()
 
         }
     }
