@@ -97,7 +97,7 @@ var Abschlussaufgabe;
             }
         }
     }
-    ///////////////////HINTERGRUNDFUNKTIONEN////////////////////////////////////////
+    ////////////////////////////HINTERGRUNDFUNKTIONEN////////////////////////////////////////
     function loadStartpic() {
         Abschlussaufgabe.crc2.drawImage(image, 0, 0);
     }

@@ -122,7 +122,7 @@ namespace Abschlussaufgabe {
             }
         }
     }
-    ///////////////////HINTERGRUNDFUNKTIONEN////////////////////////////////////////
+    ////////////////////////////HINTERGRUNDFUNKTIONEN////////////////////////////////////////
     function loadStartpic(): void {
         crc2.drawImage(image, 0, 0);
     }
