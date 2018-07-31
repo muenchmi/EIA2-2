@@ -21,7 +21,7 @@ var Abschlussaufgabe;
         canvas.addEventListener("click", startTutorial); // durch klick oder touch auf den Canvas kommt man zum Tutorial
         canvas.addEventListener("touch", startTutorial);
         image = new Image();
-        image.onload = loadStartpic; // zeichnet das Startbild 
+        image.onload = start; // zeichnet das Startbild 
         image.src = "images/start.png";
     }
     /////////////////////////////////////START SCREEN TUTORIAL/////////////////////////////////////////////////    
