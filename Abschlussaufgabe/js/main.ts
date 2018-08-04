@@ -30,7 +30,7 @@ namespace Abschlussaufgabe {
 
         image = new Image();
 
-        image.onload = start;       // zeichnet das Startbild 
+        image.onload = loadStartpic;       // zeichnet das Startbild 
 
         image.src = "images/start.png";
 
